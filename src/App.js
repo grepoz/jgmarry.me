@@ -1,12 +1,14 @@
 import logo from './img/logo.svg';
 import './App.css';
-import getFamilyMembers from './seed-database/seed-database';
+import getFamilyMembers from './database-helper/seed-database';
+import setupConnectionToDb from './database-helper/setupConnection';
 
+setupConnectionToDb();
 
 function App() {
     return (
         <div>
-            <div>{getFamilyMembers("+de,}/")}</div>
+            <div>{getFamilyMembers("tmp: pass password")}</div>
             <div id="container">
 
                 <div id="content">

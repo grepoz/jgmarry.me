@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getDatabase, ref, onValue } from "firebase/database";
+import { getDatabase } from "firebase/database";
 
 function setupConnectionToDb() {
 
@@ -27,22 +27,4 @@ function setupConnectionToDb() {
     return database;
 }
 
-function getFamilyMembers(password) {
-    const database = setupConnectionToDb();
-
-    const starCountRef = ref(database, "families");
-    let families;
-    onValue(starCountRef, (snapshot) => { families = snapshot.val(); });
-
-    let familyMembers = [];
-    families.forEach(family => {
-        if (family.password === password) {
-            familyMembers = family.members;
-        }
-    });
-
-    // TODO: handle empty familyMembers
-    return familyMembers
-}
-
-export default getFamilyMembers;
+export default setupConnectionToDb;
