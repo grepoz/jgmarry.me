@@ -56,7 +56,6 @@ def create_families_from_guests_list(filename="python-scripts/data/guests.txt"):
 
     families = []
     reading_new_family = True
-    cnt = 0
 
     for line in lines:
         if line != "":
@@ -68,7 +67,6 @@ def create_families_from_guests_list(filename="python-scripts/data/guests.txt"):
         else:
             MyEncoder().encode(family)
             families.append(family)
-            cnt += 1
             reading_new_family = True
 
     return families
