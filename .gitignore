@@ -1,4 +1,6 @@
 # exclude this file when final password list is generated 
 # generate_json_with_passwords.py
 guests.txt
+families.json
 node_modules
+.env

@@ -1,39 +1,25 @@
-import logo from './img/logo.svg';
-import './App.css';
+import setupConnectionToDb from './database-helper/setupConnection';
+import React from "react";
+import "./styles/App.css";
+import Navbar from "./components/Navbar.js";
+import { BrowserRouter as Router, Routes, Route }
+    from "react-router-dom";
+import Home from "./pages";
+import About from "./pages/about.js";
+
+setupConnectionToDb();
 
 function App() {
     return (
-        <div>
-            <div id="container">
-
-                <div id="content">
-
-                </div>
-
-                <div id="footer">
-                    Wedding &copy; Julia & Grzegorz team, wszelkie prawa zastrzeżone.
-                </div>
-
+        <Router>
+            <Navbar />
+            <div id="main-container">
+                <Routes>
+                    <Route exact path="/" element={<Home />} />
+                    <Route path="/about" element={<About />} />
+                </Routes>
             </div>
-
-
-            <div className="App">
-                <header className="App-header">
-                    <img src={logo} className="App-logo" alt="logo" />
-                    <p>
-                        Edit <code>src/App.js</code> and save to reload.
-                    </p>
-                    <a
-                        className="App-link"
-                        href="https://reactjs.org"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        Learn React
-                    </a>
-                </header>
-            </div>
-        </div>
+        </Router>
     );
 }
 
