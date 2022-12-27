@@ -1,6 +1,6 @@
 import logo from './img/logo.svg';
 import './App.css';
-import getFamilyMembers from './database-helper/seed-database';
+import getFamilyMembers from './database-helper/databaseUtils';
 import setupConnectionToDb from './database-helper/setupConnection';
 
 setupConnectionToDb();
