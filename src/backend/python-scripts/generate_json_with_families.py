@@ -124,5 +124,5 @@ if __name__ == "__main__":
     with open("src/backend/data/families.json", "w") as file:
         json.dump({"families": families}, file, cls=MyEncoder)
 
-    with open("src/backend/data/families.json", "w") as file:
+    with open("src/backend/data/passwords.txt", "w") as file:
         file.write('\n'.join(passwords))
