@@ -1,13 +1,10 @@
 import { initializeApp, deleteApp } from "firebase/app";
-import { getDatabase, ref, child, get, update, del } from "firebase/database";
+import { getDatabase, ref, child, get, update } from "firebase/database";
+import { getAuth, signInAnonymously } from "firebase/auth";
 import { StatusCodes } from 'http-status-codes';
 
 export function openConnectionToDb() {
 
-    // TODO: Add SDKs for Firebase products that you want to use
-    // https://firebase.google.com/docs/web/setup#available-libraries
-
-    // Your web app's Firebase configuration
     const firebaseConfig = {
         apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
         authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
@@ -47,6 +44,7 @@ export async function getFamily(password) {
                     const family = families[index];
 
                     if (family.password === password) {
+                        authenticate();
                         return family;
                     }
                 }
@@ -70,6 +68,7 @@ export async function getFamily(password) {
 export async function updateFamily(family) {
 
     const firebaseApp = openConnectionToDb();
+    authenticate();
     const dbRef = ref(getDatabase());
     const updates = {};
     updates[`/families/${family.id}`] = family;
@@ -82,5 +81,19 @@ export async function updateFamily(family) {
         })
         .finally(() => {
             closeConnectionToDb(firebaseApp)
+        });
+}
+
+function authenticate() {
+    const auth = getAuth();
+    signInAnonymously(auth)
+        .then(() => {
+            return;
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            // TODO: send email
+            console.log("error while logging.")
         });
 }
