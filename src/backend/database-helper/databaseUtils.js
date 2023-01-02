@@ -1,8 +1,8 @@
-import { initializeApp } from "firebase/app";
-import { getDatabase, ref, child, get, update } from "firebase/database";
+import { initializeApp, deleteApp } from "firebase/app";
+import { getDatabase, ref, child, get, update, del } from "firebase/database";
 import { StatusCodes } from 'http-status-codes';
 
-export function setupConnectionToDb() {
+export function openConnectionToDb() {
 
     // TODO: Add SDKs for Firebase products that you want to use
     // https://firebase.google.com/docs/web/setup#available-libraries
@@ -18,18 +18,24 @@ export function setupConnectionToDb() {
         appId: process.env.REACT_APP_FIREBASE_APP_ID
     }
 
-    // Initialize Firebase
     const app = initializeApp(firebaseConfig);
 
+    return app;
+}
 
-    // Initialize Realtime Database and get a reference to the service
-    const database = getDatabase(app);
-
-    return database;
+export function closeConnectionToDb(firebaseApp) {
+    deleteApp(firebaseApp)
+        .then(function () {
+            console.log("App deleted successfully");
+        })
+        .catch(function (error) {
+            console.log("Error deleting app:", error);
+        });
 }
 
 export async function getFamily(password) {
 
+    const firebaseApp = openConnectionToDb();
     const dbRef = ref(getDatabase());
 
     return await get(child(dbRef, "families"))
@@ -55,11 +61,15 @@ export async function getFamily(password) {
         .catch((error) => {
             console.error(error);
             return StatusCodes.SERVICE_UNAVAILABLE;
+        })
+        .finally(() => {
+            closeConnectionToDb(firebaseApp)
         });
 }
 
 export async function updateFamily(family) {
 
+    const firebaseApp = openConnectionToDb();
     const dbRef = ref(getDatabase());
     const updates = {};
     updates[`/families/${family.id}`] = family;
@@ -69,5 +79,8 @@ export async function updateFamily(family) {
         .catch(() => {
             console.error("error");
             return StatusCodes.SERVICE_UNAVAILABLE;
+        })
+        .finally(() => {
+            closeConnectionToDb(firebaseApp)
         });
 }
