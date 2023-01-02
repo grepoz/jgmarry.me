@@ -4,6 +4,7 @@ import secrets
 import string
 import json
 from enum import Enum
+import os
 
 
 # constants
@@ -74,7 +75,7 @@ def generate_password():
     return password
 
 
-def create_families_from_guests_list(filename="python-scripts/data/guests.txt"):
+def create_families_from_guests_list(filename="src/backend/data/guests.txt"):
     with open(filename, 'r') as file:
         lines = file.read().splitlines()
 
@@ -105,7 +106,11 @@ def create_families_from_guests_list(filename="python-scripts/data/guests.txt"):
 # temporary function
 def add_test_family_with_test_user(id, f):
     m = Member("testowy", "gosc")
-    family = Family(id, "admin1")
+    admin_password = os.getenv("FIREBASE_ADMIN_PASSWORD") if os.getenv(
+        "FIREBASE_ADMIN_PASSWORD") is not None else "admin1"
+    print(admin_password)
+    passwords.append(admin_password)
+    family = Family(id, admin_password)
     family.add_member(m)
     f.append(family)
     return f
@@ -113,7 +118,11 @@ def add_test_family_with_test_user(id, f):
 
 # main function
 if __name__ == "__main__":
+    print(os.getcwd())
     families = create_families_from_guests_list()
 
-    with open("python-scripts/data/families.json", "w") as file:
+    with open("src/backend/data/families.json", "w") as file:
         json.dump({"families": families}, file, cls=MyEncoder)
+
+    with open("src/backend/data/families.json", "w") as file:
+        file.write('\n'.join(passwords))
