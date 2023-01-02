@@ -7,6 +7,7 @@ function Navbar() {
 			<ul className="myUL">
 				<li><a className="active" href="/">Home</a></li>
 				<li><a href="/about">About</a></li>
+				<li><a href="/register">Login</a></li>
 			</ul>
 		</div>
 	);

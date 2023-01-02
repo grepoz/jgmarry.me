@@ -1,13 +1,9 @@
 import React from "react";
 import "../styles/App.css";
-import getFamilyMembers from '../database-helper/databaseUtils';
 
 const About = () => {
 	return (
 		<div id="container">
-			testing firebase
-			<div>{getFamilyMembers("tmp: pass password")}</div>
-
 			<div id="content">
 
 			</div>

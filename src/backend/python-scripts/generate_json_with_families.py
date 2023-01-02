@@ -3,23 +3,40 @@ from json import JSONEncoder
 import secrets
 import string
 import json
+from enum import Enum
+
 
 # constants
 NUMBER_OF_GUESTS = 50
 PASSWORD_LENGTH = 6
-ALPHABET = string.ascii_letters + string.punctuation + string.digits
+ALPHABET = string.ascii_letters + string.digits  # + string.punctuation
 passwords = []
 
 
-class MyEncoder(JSONEncoder):
-    def default(self, obj):
-        return obj.__dict__
+# enum
+class Diet:
+    BASIC = "podstawowa"
+    WEGETARIAN = "wegetariańska"
+    WEGAN = "wegańska"
+    LACTOSE_FREE = "bez laktozy"
+    GLUTEN_FREE = "bez glutenu"
+
+
+# model classes
+class Member:
+    def __init__(self, name, surname):
+        self.name = name
+        self.surname = surname
+        self.has_confirmed = False
+        self.diet = Diet.BASIC
 
 
 class Family:
-    def __init__(self, password):
+    def __init__(self, id, password):
+        self.id = id
         self.members = []
         self.password = password
+        self.needs_accomodation = False
 
     def add_member(self, member):
         self.members.append(member)
@@ -28,6 +45,7 @@ class Family:
         yield from {
             "members": self.members,
             "password": self.password,
+            "needs_accomodation": self.needs_accomodation
         }.items()
 
     def __str__(self):
@@ -35,9 +53,15 @@ class Family:
 
     def __repr__(self):
         return self.__str__()
+
+
+# encoder needed for serialiation to JSON
+class MyEncoder(JSONEncoder):
+    def default(self, obj):
+        return obj.__dict__
+
+
 # functions
-
-
 def generate_password():
     is_password_unique = False
     while not is_password_unique:
@@ -56,34 +80,40 @@ def create_families_from_guests_list(filename="python-scripts/data/guests.txt"):
 
     families = []
     reading_new_family = True
+    simple_id = 0
 
     for line in lines:
         if line != "":
             if reading_new_family:
-                family = Family(generate_password())
+                family = Family(simple_id, generate_password())
                 reading_new_family = False
 
-            family.add_member(line)
+            person_data = line.split()
+            member = Member(person_data[0], person_data[1])
+            family.add_member(member)
         else:
-            MyEncoder().encode(family)
             families.append(family)
+            simple_id += 1
             reading_new_family = True
+
+    # temporary
+    families = add_test_family_with_test_user(simple_id, families)
 
     return families
 
 
+# temporary function
+def add_test_family_with_test_user(id, f):
+    m = Member("testowy", "gosc")
+    family = Family(id, "admin1")
+    family.add_member(m)
+    f.append(family)
+    return f
+
+
 # main function
 if __name__ == "__main__":
-
-    # passwords = []
-    # for i in range(NUMBER_OF_GUESTS):
-    #     passwords.append(generate_password())
-
-    # print(passwords)
-
-    # with open('python-scripts/data/data.json', 'w') as file:
-    #     json.dump(passwords, file)
-
     families = create_families_from_guests_list()
+
     with open("python-scripts/data/families.json", "w") as file:
         json.dump({"families": families}, file, cls=MyEncoder)
