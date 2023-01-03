@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getFamily } from "../backend/database-helper/databaseUtils";
+import { getFamily, authenticate } from "../backend/database-helper/databaseUtils";
 import { StatusCodes } from 'http-status-codes';
 
 export default function Register() {
@@ -24,6 +24,15 @@ export default function Register() {
         }
 
         var sanitized_password = sanitizer.sanitize.keepNumber(password);
+        
+        const authenticationResult = authenticate();
+
+        if (authenticationResult === StatusCodes.INTERNAL_SERVER_ERROR) {
+            setErrorMessage("przepraszamy, wystąpił błąd serwera.");
+            setIsDisabled(false);
+            return;
+        }
+
         let family = await getFamily(sanitized_password);
 
         if (family === StatusCodes.NOT_FOUND) {

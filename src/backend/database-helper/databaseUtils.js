@@ -1,6 +1,6 @@
 import { initializeApp, deleteApp } from "firebase/app";
 import { getDatabase, ref, child, get, update } from "firebase/database";
-import { getAuth, signInAnonymously } from "firebase/auth";
+import { getAuth, signInWithCustomToken } from "firebase/auth";
 import { StatusCodes } from 'http-status-codes';
 
 export function openConnectionToDb() {
@@ -85,15 +85,23 @@ export async function updateFamily(family) {
 }
 
 function authenticate() {
+    
     const auth = getAuth();
-    signInAnonymously(auth)
-        .then(() => {
-            return;
-        })
-        .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            // TODO: send email
-            console.log("error while logging.")
-        });
+    // read token from secret
+    const token = process.env.REACT_APP_FIREBASE_AUTHENTICATION_TOKEN;
+    signInWithCustomToken(auth, token)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        console.log(user + "\n" + userCredential.user);
+        // what to do?
+        return StatusCodes.OK;
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // end email
+        console.log(`${errorMessage} \nError code: ${errorCode}`);
+        return StatusCodes.INTERNAL_SERVER_ERROR;
+      });
 }
