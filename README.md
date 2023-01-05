@@ -16,3 +16,6 @@ run python srcipt 'generate_json_with_families.py' to generate with, that later 
 upload generated json file to firebase database
 
 configure authentication for users
+
+run script:
+generated token paste to .env file (for dev purposes)
