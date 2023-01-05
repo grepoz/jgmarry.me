@@ -15,7 +15,7 @@ if __name__ == "__main__":
     
     if password != "":
         custom_token = auth.create_custom_token(password)
-        text_file = open("src/backend/token.txt", "wb")
+        text_file = open("src/backend/data/token.txt", "wb")
         n = text_file.write(custom_token)
         text_file.close()
     else:
