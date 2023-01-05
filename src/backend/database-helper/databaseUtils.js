@@ -1,7 +1,7 @@
-import { initializeApp, deleteApp } from "firebase/app";
+import { initializeApp, deleteApp, applicationDefault } from "firebase-admin/app";
 import { getDatabase, ref, child, get, update } from "firebase/database";
 import { getAuth, signInWithCustomToken } from "firebase/auth";
-import { StatusCodes } from 'http-status-codes';
+import { StatusCodes } from "http-status-codes";
 
 export function openConnectionToDb() {
 
@@ -12,7 +12,8 @@ export function openConnectionToDb() {
         projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
         storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
         messagingSenderId: process.env.REACT_APP_FIREBASE_SENDER_ID,
-        appId: process.env.REACT_APP_FIREBASE_APP_ID
+        appId: process.env.REACT_APP_FIREBASE_APP_ID,
+        credential: applicationDefault(),
     }
 
     const app = initializeApp(firebaseConfig);
@@ -84,8 +85,8 @@ export async function updateFamily(family) {
         });
 }
 
-function authenticate() {
-    
+export function authenticate() {
+    openConnectionToDb();
     const auth = getAuth();
     // read token from secret
     const token = process.env.REACT_APP_FIREBASE_AUTHENTICATION_TOKEN;
