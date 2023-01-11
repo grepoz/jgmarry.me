@@ -1,9 +1,9 @@
-import { initializeApp, deleteApp, applicationDefault } from "firebase-admin/app";
+import { initializeApp, deleteApp } from "firebase/app";
 import { getDatabase, ref, child, get, update } from "firebase/database";
-import { getAuth, signInWithCustomToken } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword , signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { StatusCodes } from "http-status-codes";
 
-export function openConnectionToDb() {
+export function openFirebaseConnection() {
 
     const firebaseConfig = {
         apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -12,8 +12,7 @@ export function openConnectionToDb() {
         projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
         storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
         messagingSenderId: process.env.REACT_APP_FIREBASE_SENDER_ID,
-        appId: process.env.REACT_APP_FIREBASE_APP_ID,
-        credential: applicationDefault(),
+        appId: process.env.REACT_APP_FIREBASE_APP_ID
     }
 
     const app = initializeApp(firebaseConfig);
@@ -33,7 +32,10 @@ export function closeConnectionToDb(firebaseApp) {
 
 export async function getFamily(password) {
 
-    const firebaseApp = openConnectionToDb();
+    const firebaseApp = openFirebaseConnection();
+
+    //createUserAuth(firebaseApp, "", "");
+    loginUser(firebaseApp, "", "");
     const dbRef = ref(getDatabase());
 
     return await get(child(dbRef, "families"))
@@ -45,7 +47,7 @@ export async function getFamily(password) {
                     const family = families[index];
 
                     if (family.password === password) {
-                        authenticate();
+                        //authenticate();
                         return family;
                     }
                 }
@@ -68,8 +70,13 @@ export async function getFamily(password) {
 
 export async function updateFamily(family) {
 
-    const firebaseApp = openConnectionToDb();
-    authenticate();
+    const firebaseApp = openFirebaseConnection();
+    // const authenticationResult = authenticate(firebaseApp);
+
+    // if (authenticationResult === StatusCodes.INTERNAL_SERVER_ERROR) {
+    //     return StatusCodes.SERVICE_UNAVAILABLE;
+    // }
+
     const dbRef = ref(getDatabase());
     const updates = {};
     updates[`/families/${family.id}`] = family;
@@ -85,24 +92,28 @@ export async function updateFamily(family) {
         });
 }
 
-export function authenticate() {
-    openConnectionToDb();
-    const auth = getAuth();
-    // read token from secret
-    const token = process.env.REACT_APP_FIREBASE_AUTHENTICATION_TOKEN;
-    signInWithCustomToken(auth, token)
-      .then((userCredential) => {
-        // Signed in
+function createUserAuth(app, email, password){
+    const auth = getAuth(app);
+    createUserWithEmailAndPassword (auth, email, password)
+    .then((userCredential) => {
+        // Signed in 
         const user = userCredential.user;
-        console.log(user + "\n" + userCredential.user);
-        // what to do?
-        return StatusCodes.OK;
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // end email
-        console.log(`${errorMessage} \nError code: ${errorCode}`);
-        return StatusCodes.INTERNAL_SERVER_ERROR;
-      });
+        console.log("success!");
+    })
+    .catch((error) => {
+        console.log("fail!");
+    });
+}
+
+function loginUser(app, email, password){
+    const auth = getAuth(app);
+    signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+        // Signed in 
+        const user = userCredential.user;
+        console.log("success!");
+    })
+    .catch((error) => {
+        console.log("fail!");
+    });
 }
