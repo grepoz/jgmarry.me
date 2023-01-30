@@ -16,9 +16,9 @@ function App() {
             <div id="main-container">
                 <Routes>
                     <Route exact path="/" element={<Home />} />
-                    <Route path="/about" element={<About />} />
-                    <Route path="/register" element={<Register />} />
-                    <Route path="/signupFamily" element={<SignupFamily />} />
+                    <Route exact path="/about" element={<About />} />
+                    <Route exact path="/register" element={<Register />} />
+                    <Route exact path="/signupFamily" element={<SignupFamily />} />
                 </Routes>
             </div>
         </Router>

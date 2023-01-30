@@ -69,7 +69,9 @@ export default function SignupFamily() {
 
                         {members.map((member, i) =>
                             <tr key={i}>
-                                <td>{member.name}</td>
+                                <td>
+                                    {member.name}
+                                </td>
 
                                 <td>
                                     <input
@@ -79,6 +81,7 @@ export default function SignupFamily() {
                                         id={i}
                                     />
                                 </td>
+                                
                                 <td>
                                     <Select
                                         value={chosenDiets[i]}
