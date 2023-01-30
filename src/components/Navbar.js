@@ -1,13 +1,15 @@
 import React from "react";
+import { NavLink } from 'react-router-dom';
 import "../styles/navBar.css"
 
 function Navbar() {
+	const appName = "jgmarry.me";
 	return (
 		<div className="navigation">
 			<ul className="myUL">
-				<li><a className="active" href="/">Home</a></li>
-				<li><a href="/about">About</a></li>
-				<li><a href="/register">Login</a></li>
+				<li><NavLink className="active" to="/">Home</NavLink ></li>
+				<li><NavLink  to="/about">About</NavLink ></li>
+				<li><NavLink  to="/register">Login</NavLink ></li>
 			</ul>
 		</div>
 	);

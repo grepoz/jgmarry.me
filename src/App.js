@@ -1,6 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route }
-    from "react-router-dom";
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import "./styles/App.css";
 import Navbar from "./components/Navbar.js";
 
@@ -8,20 +7,25 @@ import Home from "./pages";
 import About from "./pages/about.js";
 import Register from './pages/register';
 import SignupFamily from './pages/signupFamily.js';
+import ErrorPage from './pages/errorPage.js'
 
 function App() {
+    const appName = "jgmarry.me";
     return (
-        <Router>
-            <Navbar />
-            <div id="main-container">
-                <Routes>
-                    <Route exact path="/" element={<Home />} />
-                    <Route exact path="/about" element={<About />} />
-                    <Route exact path="/register" element={<Register />} />
-                    <Route exact path="/signupFamily" element={<SignupFamily />} />
-                </Routes>
+        <BrowserRouter>
+            <div>
+                <Navbar />
+                <div id="main-container">
+                    <Routes>
+                        <Route basename={`/${appName}`} index path="/" element={<Home />} />
+                        <Route basename={`/${appName}`} path="about" element={<About />} />
+                        <Route basename={`/${appName}`} path="register" element={<Register />} />
+                        <Route basename={`/${appName}`} path="signupFamily" element={<SignupFamily />} />
+                        <Route basename={`/${appName}`} path="*" element={<ErrorPage />} />
+                    </Routes>
+                </div>
             </div>
-        </Router>
+        </BrowserRouter>
     );
 }
 
