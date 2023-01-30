@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import "./styles/App.css";
 import Navbar from "./components/Navbar.js";
+import configData from "./config.json";
 
 import Home from "./pages";
 import About from "./pages/about.js";
@@ -10,7 +11,8 @@ import SignupFamily from './pages/signupFamily.js';
 import ErrorPage from './pages/errorPage.js'
 
 function App() {
-    const appName = "jgmarry.me";
+    const appName = configData.APP_NAME;
+    
     return (
         <BrowserRouter>
             <div>
