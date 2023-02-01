@@ -15,18 +15,19 @@ function App() {
     
     return (
         <BrowserRouter>
-            <div>
+            <header>
                 <Navbar />
-                <div id="main-container">
-                    <Routes>
-                        <Route basename={`/${appName}`} index path="/" element={<Home />} />
-                        <Route basename={`/${appName}`} path="about" element={<About />} />
-                        <Route basename={`/${appName}`} path="register" element={<Register />} />
-                        <Route basename={`/${appName}`} path="signupFamily" element={<SignupFamily />} />
-                        <Route basename={`/${appName}`} path="*" element={<ErrorPage />} />
-                    </Routes>
-                </div>
-            </div>
+            </header>
+            <main>
+                <Routes>
+                    <Route basename={`/${appName}`} index path="/" element={<Home />} />
+                    <Route basename={`/${appName}`} path="about" element={<About />} />
+                    <Route basename={`/${appName}`} path="register" element={<Register />} />
+                    <Route basename={`/${appName}`} path="signupFamily" element={<SignupFamily />} />
+                    <Route basename={`/${appName}`} path="*" element={<ErrorPage />} />
+                </Routes>
+            </main>
+            <footer></footer>
         </BrowserRouter>
     );
 }
