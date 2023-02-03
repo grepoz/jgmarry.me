@@ -1,4 +1,5 @@
 # modules
+from datetime import datetime
 from json import JSONEncoder
 import secrets
 import string
@@ -64,6 +65,8 @@ class MyEncoder(JSONEncoder):
 
 # functions
 def generate_password():
+
+    password = ''
     is_password_unique = False
     while not is_password_unique:
         password = ''.join(secrets.choice(ALPHABET)
@@ -82,6 +85,7 @@ def create_families_from_guests_list(filename=GUESTS_FILEPATH):
     families = []
     reading_new_family = True
     simple_id = 0
+    family: Family = Family(None, None)
 
     for line in lines:
         if line != "":
@@ -115,12 +119,20 @@ def add_test_family_with_test_user(id, f):
     return f
 
 
+def get_today():
+    now = datetime.now()
+
+    return now.strftime("%d-%m-%Y_%H-%M-%S")
+
+def combine_filename(base_filename):
+    return f"{get_today()}_{base_filename}"
+
 # main function
 if __name__ == "__main__":
     families = create_families_from_guests_list()
 
-    with open(FAMILIES_FILEPATH, "w") as file:
+    with open(combine_filename(FAMILIES_FILEPATH), "w") as file:
         json.dump({"families": families}, file, cls=MyEncoder)
 
-    with open(PASSWORDS_FILEPATH, "w") as file:
+    with open(combine_filename(PASSWORDS_FILEPATH), "w") as file:
         file.write('\n'.join(passwords))
