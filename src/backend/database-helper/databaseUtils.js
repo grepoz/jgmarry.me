@@ -30,12 +30,15 @@ export function closeConnectionToDb(firebaseApp) {
         });
 }
 
-export async function getFamily(password) {
+export async function getFamily(familyPassword) {
 
     const firebaseApp = openFirebaseConnection();
 
     //createUserAuth(firebaseApp, "", "");
-    loginUser(firebaseApp, "", "");
+    const email = process.env.REACT_APP_MAIN_USER_EMAIL;
+    const password = process.env.REACT_APP_MAIN_USER_PASSWORD;
+
+    loginUser(firebaseApp, email, password);
     const dbRef = ref(getDatabase());
 
     return await get(child(dbRef, "families"))
@@ -46,7 +49,7 @@ export async function getFamily(password) {
                 for (let index = 0; index < families.length; index++) {
                     const family = families[index];
 
-                    if (family.password === password) {
+                    if (family.password === familyPassword) {
                         //authenticate();
                         return family;
                     }

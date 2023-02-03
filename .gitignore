@@ -2,6 +2,12 @@
 # generate_json_with_passwords.py
 node_modules
 src/backend/data/
-.env
+.env.development
+.env.production
 src/backend/__pycache__/
 build
+
+    Get-Content .env.development | Foreach-Object{
+    $var = $_.Split('=')
+    New-Item -Path Env:$var[0] -Value $var[1]
+}
