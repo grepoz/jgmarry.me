@@ -111,7 +111,7 @@ def create_families_from_guests_list(filename=GUESTS_FILEPATH):
 def add_test_family_with_test_user(id, f):
     m = Member("testowy", "gosc")
     admin_password = os.getenv("FIREBASE_ADMIN_PASSWORD") if os.getenv(
-        "FIREBASE_ADMIN_PASSWORD") is not None else "admin1"
+        "FIREBASE_ADMIN_PASSWORD") is not None else "123456"
     passwords.append(admin_password)
     family = Family(id, admin_password)
     family.add_member(m)

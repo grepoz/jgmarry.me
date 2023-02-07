@@ -1,7 +1,25 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getFamily } from "../backend/database-helper/databaseUtils";
+import { getFamily } from "../old-backend/database-helper/databaseUtils";
 import { StatusCodes } from 'http-status-codes';
+
+async function loginFamily() {
+
+    const password = "";
+    const requestOptions = {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        },// necessary ????
+        body: JSON.stringify(password)
+    };
+
+    let result = await fetch("/login", requestOptions)
+        .then(_ => alert("We will email you when process is finished :)"))
+        .catch(error => alert(`There was an error: ${error}. Try again later.`));
+
+    return result;
+}
 
 export default function Login() {
 
