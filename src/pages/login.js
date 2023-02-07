@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { getFamily } from "../backend/database-helper/databaseUtils";
 import { StatusCodes } from 'http-status-codes';
 
-export default function Register() {
+export default function Login() {
 
     var sanitizer = require("string-sanitizer");
     const PASSWORD_LENGTH = 6;
@@ -15,7 +15,7 @@ export default function Register() {
         event.preventDefault();
 
         setIsDisabled(true);
-        var password = document.getElementById("registerPassword").value;
+        var password = document.getElementById("loginPassword").value;
 
         if (password.length !== PASSWORD_LENGTH) {
             setErrorMessage("hasło ma dokładnie 6 znaków.");
@@ -51,9 +51,9 @@ export default function Register() {
         <div>
             <form onSubmit={handleSubmit} method="POST">
                 <label htmlFor="password">Podaj hasło</label>
-                <input type={"password"} id="registerPassword" name="password" maxLength={PASSWORD_LENGTH}></input>
+                <input type={"password"} id="loginPassword" name="password" maxLength={PASSWORD_LENGTH}></input>
                 {(!errorMessage !== "") ? <span style={{ color: "red" }}><div>{errorMessage}</div></span> : <></>}
-                <input type="submit" value="Register" disabled={isDisabled}></input>
+                <input type="submit" value="Login" disabled={isDisabled}></input>
             </form>
         </div>
     )
