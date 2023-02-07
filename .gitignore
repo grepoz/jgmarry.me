@@ -10,7 +10,3 @@ src/backend/.env
 src/backend/data/
 src/backend/__pycache__/
 src/backend/config.py
-
-.env
-.env.development
-.env.production
