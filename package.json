@@ -14,12 +14,10 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "predeploy": "npm run build:production",
-    "deploy": "gh-pages -d build:production",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
-    "build": ". .env.${REACT_APP_ENV} && react-scripts build",
-    "build:development": "set REACT_APP_ENV=development && npm run build",
-    "build:production": "set REACT_APP_ENV=production && npm run build",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
