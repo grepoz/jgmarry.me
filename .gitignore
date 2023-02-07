@@ -1,9 +1,16 @@
 # exclude this file when final password list is generated 
 # generate_json_with_passwords.py
+build
 node_modules
-src/backend/data/
+
+src/backend/.idea
+src/backend/venv
+src/backend/.env
+
+src/old-backend/data/
+src/old-backend/__pycache__/
+src/old-backend/config.py
+
 .env
 .env.development
 .env.production
-src/backend/__pycache__/
-build
