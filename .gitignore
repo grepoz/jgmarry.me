@@ -1,15 +1,15 @@
 # exclude this file when final password list is generated 
 # generate_json_with_passwords.py
+.idea
 build
 node_modules
 
 src/backend/.idea
 src/backend/venv
 src/backend/.env
-
-src/old-backend/data/
-src/old-backend/__pycache__/
-src/old-backend/config.py
+src/backend/data/
+src/backend/__pycache__/
+src/backend/config.py
 
 .env
 .env.development

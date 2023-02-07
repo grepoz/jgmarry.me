@@ -1,6 +1,5 @@
 # modules
 from datetime import datetime
-from json import JSONEncoder
 import secrets
 import string
 import json
@@ -8,59 +7,13 @@ import os
 from config import GUESTS_FILEPATH, FAMILIES_FILEPATH, PASSWORDS_FILEPATH
 
 
-# constants
+from models.family import Family, MyEncoder
+from models.member import Member
+
 NUMBER_OF_GUESTS = 50
 PASSWORD_LENGTH = 6
-ALPHABET = string.ascii_letters + string.digits  # + string.punctuation
+ALPHABET = string.ascii_letters + string.digits
 passwords = []
-
-
-# enum
-class Diet:
-    BASIC = "podstawowa"
-    WEGETARIAN = "wegetariańska"
-    WEGAN = "wegańska"
-    LACTOSE_FREE = "bez laktozy"
-    GLUTEN_FREE = "bez glutenu"
-
-
-# model classes
-class Member:
-    def __init__(self, name, surname):
-        self.name = name
-        self.surname = surname
-        self.has_confirmed = False
-        self.diet = Diet.BASIC
-
-
-class Family:
-    def __init__(self, id, password):
-        self.id = id
-        self.members = []
-        self.password = password
-        self.needs_accomodation = False
-
-    def add_member(self, member):
-        self.members.append(member)
-
-    def __iter__(self):
-        yield from {
-            "members": self.members,
-            "password": self.password,
-            "needs_accomodation": self.needs_accomodation
-        }.items()
-
-    def __str__(self):
-        return json.dumps(dict(self), cls=MyEncoder, ensure_ascii=False)
-
-    def __repr__(self):
-        return self.__str__()
-
-
-# encoder needed for serialiation to JSON
-class MyEncoder(JSONEncoder):
-    def default(self, obj):
-        return obj.__dict__
 
 
 # functions
@@ -107,7 +60,6 @@ def create_families_from_guests_list(filename=GUESTS_FILEPATH):
     return families
 
 
-# temporary function
 def add_test_family_with_test_user(id, f):
     m = Member("testowy", "gosc")
     admin_password = os.getenv("FIREBASE_ADMIN_PASSWORD") if os.getenv(
@@ -124,10 +76,11 @@ def get_today():
 
     return now.strftime("%d-%m-%Y_%H-%M-%S")
 
+
 def combine_filename(base_filename):
     return f"{get_today()}_{base_filename}"
 
-# main function
+
 if __name__ == "__main__":
     families = create_families_from_guests_list()
 
