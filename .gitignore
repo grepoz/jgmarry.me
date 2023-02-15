@@ -9,5 +9,6 @@ src/backend/venv
 src/backend/.env
 src/backend/data/
 src/backend/__pycache__/
+src/backend/models/__pycache__/
 src/backend/config.py
 src/backend/service_account_key.json

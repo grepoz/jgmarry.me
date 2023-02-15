@@ -1,20 +1,21 @@
+import json
 import os
-from dotenv import load_dotenv
-from flask import Flask, request
+
 import firebase_admin
+from dotenv import load_dotenv
 from firebase_admin import credentials
 from firebase_admin import db
-import json
+from flask import Flask, request
 
-from models.family import Family
-
-from models.requestModels import LoginParams
+from models.requestModels import LoginParams, SignupParams
 
 load_dotenv()
 
 cred = credentials.Certificate('service_account_key.json')
 
-firebase_admin.initialize_app(cred)
+firebase_admin.initialize_app(cred, {
+    'databaseURL': os.getenv("FIREBASE_DATABASE_URL")
+})
 
 app = Flask(__name__)
 app.config['TESTING'] = True
@@ -22,22 +23,34 @@ app.config['TESTING'] = True
 
 @app.post("/login")
 def login():
-
     family_password = LoginParams.parse_obj(request.json).familyPassword
 
     ref = db.reference("families")
-    families: [Family] = ref.get()
-    # for family.password in families:
-    #     if family == family_password:
-    #         return json.dumps({'success': True, 'family': family}), 200, {'ContentType': 'application/json'}
+    families = ref.get()
+
+    for family in families: # noqa
+        if family["password"] == family_password:
+            return json.dumps({'success': True, 'family': family}), 200, {'ContentType': 'application/json'}
 
     return json.dumps({'success': False}), 401, {'ContentType': 'application/json'}
 
 
-@app.post("/signupFamily")
+@app.put("/signupFamily")
 def register_family():
+    updated_family = SignupParams.parse_obj(request.json)
 
-    return ""
+    ref = db.reference("families")
+    families = ref.get()
+
+    cnt = 0
+
+    for family in families:  # noqa
+        if family["id"] == updated_family.id:
+            ref.child(str(cnt)).update({str(cnt): updated_family})
+            return json.dumps({'success': True}), 200, {'ContentType': 'application/json'}
+        cnt += 1
+
+    return json.dumps({'success': False}), 404, {'ContentType': 'application/json'}
 
 
 if __name__ == '__main__':
