@@ -54,34 +54,34 @@ def register_family():
         if family["id"] == updated_family.id:
             # ref.child(str(cnt)).update({str(cnt): json.dumps(test_family)})
             # ref.child(f"{str(cnt)}/members").set(json.dumps(test_family.members, indent=4))
-            ref = db.reference(f"families/{str(20)}")
-            # dumped = json.dumps(test_family.members, indent=4, cls=MyEncoder)
-            ref.set({
-                "id": 20,
-                "members": [
-                    {
-                        "diet": "podstawowa",
-                        "has_confirmed": True,
-                        "name": "Anna",
-                        "surname": "Naczke"
-                    },
-                    {
-                        "diet": "podstawowa",
-                        "has_confirmed": True,
-                        "name": "Marcin",
-                        "surname": "Naczke"
-                    },
-                    {
-                        "diet": "podstawowa",
-                        "has_confirmed": True,
-                        "name": "Antek",
-                        "surname": "Naczke"
-                    }
-                ],
-                "needs_accomodation": False,
-                "password": "test12"
 
-            })
+            # ref = db.reference(f"families")
+
+            dumped = json.dumps({str(20): test_family}, indent=4, cls=MyEncoder)
+
+            ref.update(json.loads(dumped))
+
+            # ref.update({str(20): {
+            #     "id": 33,
+            #     "members": [
+            #         json.dumps(Member("jan", "kol"), indent=4, cls=MyEncoder),
+            #         {
+            #             "diet": "podstawowa",
+            #             "has_confirmed": True,
+            #             "name": "Marcin",
+            #             "surname": "Naczke"
+            #         },
+            #         {
+            #             "diet": "podstawowa",
+            #             "has_confirmed": True,
+            #             "name": "Antek",
+            #             "surname": "Naczke"
+            #         }
+            #     ],
+            #     "needs_accomodation": False,
+            #     "password": "test12"
+            #
+            # }})
             # ref.push().set(json.dumps(test_family, indent=4, cls=MyEncoder))
             return json.dumps({'success': True}), 200, {'ContentType': 'application/json'}
         cnt += 1
