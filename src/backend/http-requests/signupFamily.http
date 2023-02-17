@@ -1,0 +1,30 @@
+PUT http://127.0.0.1:4000/signupFamily
+Content-Type: application/json
+
+{
+    "id": 0,
+    "members": [
+        {
+            "diet": "podstawowa",
+            "has_confirmed": true,
+            "name": "Anna",
+            "surname": "Naczke"
+        },
+        {
+            "diet": "podstawowa",
+            "has_confirmed": true,
+            "name": "Marcin",
+            "surname": "Naczke"
+        },
+        {
+            "diet": "podstawowa",
+            "has_confirmed": true,
+            "name": "Antek",
+            "surname": "Naczke"
+        }
+    ],
+    "needs_accomodation": false,
+    "password" : "test12"
+
+}
+###
