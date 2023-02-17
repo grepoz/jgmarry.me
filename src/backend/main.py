@@ -7,6 +7,8 @@ from firebase_admin import credentials
 from firebase_admin import db
 from flask import Flask, request
 
+from models.family import Family, MyEncoder
+from models.member import Member
 from models.requestModels import LoginParams, SignupParams
 
 load_dotenv()
@@ -28,7 +30,7 @@ def login():
     ref = db.reference("families")
     families = ref.get()
 
-    for family in families: # noqa
+    for family in families:  # noqa
         if family["password"] == family_password:
             return json.dumps({'success': True, 'family': family}), 200, {'ContentType': 'application/json'}
 
@@ -42,11 +44,45 @@ def register_family():
     ref = db.reference("families")
     families = ref.get()
 
+    test_family = Family(33, "test99")
+    test_family.add_member(Member("jan", "kol"))
+    test_family.add_member(Member("ania", "bol"))
+
     cnt = 0
 
     for family in families:  # noqa
         if family["id"] == updated_family.id:
-            ref.child(str(cnt)).update({str(cnt): updated_family})
+            # ref.child(str(cnt)).update({str(cnt): json.dumps(test_family)})
+            # ref.child(f"{str(cnt)}/members").set(json.dumps(test_family.members, indent=4))
+            ref = db.reference(f"families/{str(20)}")
+            # dumped = json.dumps(test_family.members, indent=4, cls=MyEncoder)
+            ref.set({
+                "id": 20,
+                "members": [
+                    {
+                        "diet": "podstawowa",
+                        "has_confirmed": True,
+                        "name": "Anna",
+                        "surname": "Naczke"
+                    },
+                    {
+                        "diet": "podstawowa",
+                        "has_confirmed": True,
+                        "name": "Marcin",
+                        "surname": "Naczke"
+                    },
+                    {
+                        "diet": "podstawowa",
+                        "has_confirmed": True,
+                        "name": "Antek",
+                        "surname": "Naczke"
+                    }
+                ],
+                "needs_accomodation": False,
+                "password": "test12"
+
+            })
+            # ref.push().set(json.dumps(test_family, indent=4, cls=MyEncoder))
             return json.dumps({'success': True}), 200, {'ContentType': 'application/json'}
         cnt += 1
 

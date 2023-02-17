@@ -23,6 +23,7 @@ class SignupParams(BaseModel):
     members: List[MemberModel]
     needs_accomodation: bool
 
+
     def __iter__(self):
         yield from {
             "id": self.id,
