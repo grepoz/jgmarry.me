@@ -5,15 +5,15 @@ import { StatusCodes } from 'http-status-codes';
 async function loginFamily(password) {
 
     const requestOptions = {
-        method: "GET",
+        method: "POST",
         headers: {
             "Content-Type": "application/json"
         },// necessary ????
-        body: JSON.stringify(password)
+        body: JSON.stringify({ "password": password })
     };
 
     let result = await fetch("/login", requestOptions)
-        .then(_ => alert("We will email you when process is finished :)"))
+        .then(response => { return response.json(); })
         .catch(error => alert(`There was an error: ${error}. Try again later.`));
 
     return result;

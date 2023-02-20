@@ -1,8 +1,23 @@
 import React, { useState } from "react";
 import Select from "react-select"
 import { useLocation } from "react-router-dom";
-import { updateFamily } from "../backend/database-helper/databaseUtils";
 import { StatusCodes } from "http-status-codes";
+
+async function updateFamily(family){
+    const requestOptions = {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },// necessary ????
+        body: JSON.stringify(family)
+    };
+
+    let result = await fetch("/signupFamily", requestOptions)
+        .then(response => { return response.json(); })
+        .catch(error => alert(`There was an error: ${error}. Try again later.`));
+
+    return result;
+}
 
 export default function SignupFamily() {
 
@@ -45,6 +60,7 @@ export default function SignupFamily() {
         family.needs_accomodation = event.target['needsAccomodation'].checked;
 
         let result = await updateFamily(family);
+
         if (result === StatusCodes.OK) {
             alert("zapisano!");
         }
