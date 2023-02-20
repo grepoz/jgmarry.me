@@ -37,7 +37,7 @@ def login():
 
 
 @app.put("/signupFamily")
-def register_family():
+def signup_family():
     updated_family = SignupParams.parse_obj(request.json)
 
     ref = db.reference("families")
