@@ -11,6 +11,16 @@ const backendProxyPOST = {
     changeOrigin: true
 }
 
+const backendProxyPUT = {
+    target: BACKEND_URL,
+    changeOrigin: true,
+    headers: {
+        accept: "application/json",
+        method: "PUT",
+    },
+}
+
+
 const backendProxyGET = {
     target: BACKEND_URL,
     changeOrigin: true,
@@ -24,11 +34,11 @@ module.exports = function (app) {
 
     app.use(
         "/login",
-        createProxyMiddleware(backendProxyGET)
+        createProxyMiddleware(backendProxyPOST)
     );
 
     app.use(
         "/signupFamily",
-        createProxyMiddleware(backendProxyPOST)
+        createProxyMiddleware(backendProxyPUT)
     );
 };
