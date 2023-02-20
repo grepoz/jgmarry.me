@@ -13,20 +13,21 @@ class MemberModel(BaseModel):
 
 
 class LoginParams(BaseModel):
-    familyPassword: str
+    password: str
 
 
 class SignupParams(BaseModel):
     id: int
     members: List[MemberModel]
     needs_accomodation: bool
-
+    password: str
 
     def __iter__(self):
         yield from {
             "id": self.id,
             "members": self.members,
-            "needs_accomodation": self.needs_accomodation
+            "needs_accomodation": self.needs_accomodation,
+            "password": self.password
         }.items()
 
     def __str__(self):

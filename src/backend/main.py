@@ -24,14 +24,15 @@ app.config['TESTING'] = True
 
 @app.post("/login")
 def login():
-    family_password = LoginParams.parse_obj(request.json).familyPassword
+    parsed_request = LoginParams.parse_obj(request.json)
+    family_password = parsed_request.password
 
     ref = db.reference("families")
     families = ref.get()
 
     for family in families:  # noqa
         if family["password"] == family_password:
-            return json.dumps({'success': True, 'family': family}), 200, {'ContentType': 'application/json'}
+            return family
 
     return json.dumps({'success': False}), 401, {'ContentType': 'application/json'}
 
@@ -48,7 +49,7 @@ def signup_family():
         if family_id == updated_family.id:
             dumped = json.dumps({str(family_id): updated_family}, indent=4, cls=MyEncoder)
             ref.update(json.loads(dumped))
-            return json.dumps({'success': True}), 200, {'ContentType': 'application/json'}
+            return "Success", 200  #json.dumps({'success': True}), 200, {'ContentType': 'application/json'}
 
     return json.dumps({'success': False}), 404, {'ContentType': 'application/json'}
 
