@@ -1,10 +1,8 @@
 import json
-
-from pydantic import BaseModel
 from typing import List
+from pydantic import BaseModel
 
 from models.family import MyEncoder
-from models.member import Member
 
 
 class MemberModel(BaseModel):

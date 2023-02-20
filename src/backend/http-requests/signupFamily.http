@@ -23,8 +23,7 @@ Content-Type: application/json
             "surname": "Naczke"
         }
     ],
-    "needs_accomodation": false,
-    "password" : "test12"
+    "needs_accomodation": false
 
 }
 ###
