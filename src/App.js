@@ -6,7 +6,7 @@ import configData from "./config.json";
 
 import Home from "./pages";
 import About from "./pages/about.js";
-import Login from './pages/register';
+import Login from './pages/login';
 import SignupFamily from './pages/signupFamily.js';
 import ErrorPage from './pages/errorPage.js'
 

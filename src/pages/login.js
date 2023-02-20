@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getFamily } from "../old-backend/database-helper/databaseUtils";
 import { StatusCodes } from 'http-status-codes';
 
-async function loginFamily() {
+async function loginFamily(password) {
 
-    const password = "";
     const requestOptions = {
         method: "GET",
         headers: {
@@ -43,7 +41,7 @@ export default function Login() {
 
         var sanitized_password = sanitizer.sanitize.keepNumber(password);
 
-        let family = await getFamily(sanitized_password);
+        let family = await loginFamily(sanitized_password);
 
         if (family === StatusCodes.NOT_FOUND) {
             setErrorMessage("nie znaleziono rodziny dla podanego hasła.");

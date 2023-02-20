@@ -1,4 +1,4 @@
-import { createProxyMiddleware } from 'http-proxy-middleware';
+const { createProxyMiddleware } = require('http-proxy-middleware'); // have to be CommonJS module (old fashion)
 
 let BACKEND_URL = "http://127.0.0.1:4000";
 
