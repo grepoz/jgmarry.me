@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import "../styles/navBar.css"
 
 function Navbar() {
-	const appName = "jgmarry.me";
+	
 	return (
 		<div className="navigation">
 			<h2><NavLink to="/">JULIA & GRZEGORZ</NavLink></h2>

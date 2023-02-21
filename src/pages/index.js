@@ -1,7 +1,5 @@
 import React from "react";
 import "../styles/App.css";
-import tlo from '../img/tlo.png';
-import my from '../img/my.png';
 
 function importAll(r) {
 	let images = {};
@@ -11,10 +9,10 @@ function importAll(r) {
 
 const images = importAll(require.context('../img', false, /\.(png|jpe?g|svg)$/));
 
-var looper;
-var degrees = 0;
+let looper;
+let degrees = 0;
 function rotateAnimation(el,speed){
-    var elem = document.getElementById(el);
+    let elem = document.getElementById(el);
     elem.style.transform .transform = "rotate("+degrees+"deg)";
     looper = setTimeout('rotateAnimation(\''+el+'\','+speed+')',speed);
     degrees++;

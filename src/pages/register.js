@@ -5,7 +5,7 @@ import { StatusCodes } from 'http-status-codes';
 
 export default function Register() {
 
-    var sanitizer = require("string-sanitizer");
+    let sanitizer = require("string-sanitizer");
     const PASSWORD_LENGTH = 6;
     const [isDisabled, setIsDisabled] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
@@ -15,7 +15,7 @@ export default function Register() {
         event.preventDefault();
 
         setIsDisabled(true);
-        var password = document.getElementById("registerPassword").value;
+        let password = document.getElementById("registerPassword").value;
 
         if (password.length !== PASSWORD_LENGTH) {
             setErrorMessage("hasło ma dokładnie 6 znaków.");
@@ -23,7 +23,7 @@ export default function Register() {
             return;
         }
 
-        var sanitized_password = sanitizer.sanitize.keepNumber(password);
+        let sanitized_password = sanitizer.sanitize.keepNumber(password);
 
         let family = await getFamily(sanitized_password);
 

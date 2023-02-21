@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import "../styles/Footer.css"
 
 function Footer() {
-	const appName = "jgmarry.me";
+	
 	return (
 		<div className="footer">
 			<ul className="myUL">
