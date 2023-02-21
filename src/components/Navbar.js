@@ -6,12 +6,14 @@ function Navbar() {
 	const appName = "jgmarry.me";
 	return (
 		<div className="navigation">
+			<h2><NavLink to="/">JULIA & GRZEGORZ</NavLink></h2>
 			<ul className="myUL">
 				<li><NavLink className="active" to="/">Home</NavLink ></li>
-				<li><NavLink  to="/about">About</NavLink ></li>
-				<li><NavLink  to="/register">Login</NavLink ></li>
+				<li><NavLink  to="/about">info</NavLink ></li>
+				<li><NavLink  to="/memo">memo</NavLink ></li>
+				<li><NavLink className="button" to="/register">Login</NavLink ></li>
 			</ul>
-		</div>
+		</div>       
 	);
 }
 

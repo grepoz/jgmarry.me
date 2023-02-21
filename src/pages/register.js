@@ -47,14 +47,52 @@ export default function Register() {
         navigate("/signupFamily", { state });
     }
 
+
+
     return (
         <div>
-            <form onSubmit={handleSubmit} method="POST">
-                <label htmlFor="password">Podaj hasło</label>
-                <input type={"password"} id="registerPassword" name="password" maxLength={PASSWORD_LENGTH}></input>
-                {(!errorMessage !== "") ? <span style={{ color: "red" }}><div>{errorMessage}</div></span> : <></>}
-                <input type="submit" value="Register" disabled={isDisabled}></input>
-            </form>
+            
+            <div className="tlo">
+                <img 
+                src="./img/tlo.png"
+                alt="dwie dziewiatki rzymskie" />
+            </div>
+
+            <div className="login-p">
+                <div className="three-col"> 
+                    <div className="exp">
+                        <div className="napisy_boczne_j">julia</div>
+                    </div>
+                    <div>
+                        <div>
+                            <img 
+                            src="./img/zaloguj sie2.png" 
+                            alt="zalogujsie2" 
+                            className="login2" />
+                        </div>
+                        <div className="home-info">
+                            <div><p>potwierdź nam swoją obecnosć</p></div>
+                            <div className="grey-bg">
+                                <div className="ankieta"> 
+                                    <div><h3>zaloguj się</h3></div>
+                                    <div className="login-action">
+                                        <form onSubmit={handleSubmit} method="POST">
+                                            <label htmlFor="password">Podaj hasło</label>
+                                            <input type={"password"} id="registerPassword" name="password" maxLength={PASSWORD_LENGTH}></input>
+                                            {(!errorMessage !== "") ? <span style={{ color: "red" }}><div>{errorMessage}</div></span> : <></>}
+                                            <input type="submit" value="Register" disabled={isDisabled}></input>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <h5>Użyj hasła podanego na zaproszeniu</h5>
+                        </div>
+                    </div>
+                    <div className="exp">
+                        <div className="napisy_boczne_g"><div className="none">0</div> grześ</div>
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }

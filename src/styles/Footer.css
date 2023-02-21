@@ -1,0 +1,14 @@
+.footer {
+    height: 10vh;
+}
+
+.footer ul {
+    display: flex;
+    text-decoration: none;
+    list-style-type: none;
+    text-transform: uppercase;
+    font-weight: 600;
+    justify-content: flex-end;
+    margin: 0;
+    padding: 0;
+}
