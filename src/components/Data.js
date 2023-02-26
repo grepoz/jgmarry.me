@@ -9,6 +9,7 @@ const Data = () => {
 
             <a href="#rsvp" className="button button--flex">
                 Potwierdź obecność
+                <i class="uil uil-message button__icon"></i>
             </a>
 
         </div>
