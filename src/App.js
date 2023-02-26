@@ -1,10 +1,10 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import "./styles/App.css";
-import Navbar from "./components/Navbar.js";
+import Header from "./components/Header.js";
 import configData from "./config.json";
 
-import Home from "./pages";
+import Home from "./pages/home.js";
 import About from "./pages/about.js";
 import Register from './pages/register';
 import SignupFamily from './pages/signupFamily.js';
@@ -15,10 +15,8 @@ function App() {
     
     return (
         <BrowserRouter>
-            <header>
-                <Navbar />
-            </header>
-            <main>
+                <Header />
+            <main className="main">
                 <Routes>
                     <Route basename={`/${appName}`} index path="/" element={<Home />} />
                     <Route basename={`/${appName}`} path="about" element={<About />} />
