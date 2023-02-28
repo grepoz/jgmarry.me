@@ -13,6 +13,9 @@ function Footer() {
                     </svg></NavLink >
                 </li>
 			</ul>
+			<div id="copywrights">
+				Wedding &copy; Julia & Grzegorz team, wszelkie prawa zastrzeżone.
+			</div>
 		</div>
         
 	);

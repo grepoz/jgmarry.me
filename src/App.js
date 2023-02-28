@@ -5,8 +5,8 @@ import Header from "./components/Header.js";
 import configData from "./config.json";
 
 import Home from "./pages/home.js";
-import About from "./pages/about.js";
-import Register from './pages/register';
+import About from "./pages/about";
+import Register from './pages/register.js';
 import SignupFamily from './pages/signupFamily.js';
 import ErrorPage from './pages/errorPage.js'
 
