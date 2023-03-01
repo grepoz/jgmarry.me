@@ -6,13 +6,13 @@ const Header = () => {
     return (
         <header className="header">
             <nav className="nav container">
-                <a href="index.html" className="nav__logo">Grzegorz i Julia</a>
+                <a href="/" className="nav__logo">Julia & Grześ</a>
 
                 <div className={Toggle ? "nav__menu show-menu" : 
                 "nav__menu"}>
                     <ul className="nav__list grid">
                         <li className="nav__item">
-                            <a href="#home" className="nav__link active-link">
+                            <a href="/" className="nav__link active-link">
                                 <i className="uil uil-estate nav__icon"></i> 
                                 Home
                             </a>
@@ -21,21 +21,21 @@ const Header = () => {
                         <li className="nav__item">
                             <a href="about" className="nav__link">
                                 <i className="uil uil-master-card nav__icon"></i> 
-                                Our Story
+                                Nasza historia
                             </a>
                         </li>
 
                         <li className="nav__item">
                             <a href="info" className="nav__link">
                                 <i className="uil uil-megaphone nav__icon"></i> 
-                                Informations
+                                Informacje
                             </a>
                         </li>
 
                         <li className="nav__item">
                             <a href="#gallery" className="nav__link">
                                 <i className="uil uil-scenery nav__icon"></i> 
-                                Gallery
+                                Galeria
                             </a>
                         </li>
 
@@ -49,7 +49,7 @@ const Header = () => {
                         <li className="nav__item">
                             <a href="#contact" className="nav__link">
                                 <i className="uil uil-message nav__icon"></i> 
-                                Contact
+                                Kontakt
                             </a>
                         </li>
                     </ul>
