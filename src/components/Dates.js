@@ -1,8 +1,8 @@
 import React from "react";
 
-const Info = () => {
+const Dates = () => {
     return (
-        <div className="about__info grid">
+        <div className="about__dates grid">
             
             <div className="about__box">
             <i class='bx bx-camera-movie about__icon'></i>
@@ -29,4 +29,4 @@ const Info = () => {
     )
 }
 
-export default Info
+export default Dates

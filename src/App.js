@@ -6,6 +6,7 @@ import configData from "./config.json";
 
 import Home from "./pages/home.js";
 import About from "./pages/about";
+import Info from "./pages/info";
 import Register from './pages/register.js';
 import SignupFamily from './pages/signupFamily.js';
 import ErrorPage from './pages/errorPage.js'
@@ -20,6 +21,7 @@ function App() {
                 <Routes>
                     <Route basename={`/${appName}`} index path="/" element={<Home />} />
                     <Route basename={`/${appName}`} path="about" element={<About />} />
+                    <Route basename={`/${appName}`} path="info" element={<Info />} />
                     <Route basename={`/${appName}`} path="register" element={<Register />} />
                     <Route basename={`/${appName}`} path="signupFamily" element={<SignupFamily />} />
                     <Route basename={`/${appName}`} path="*" element={<ErrorPage />} />

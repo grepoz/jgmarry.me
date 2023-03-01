@@ -8,7 +8,7 @@
     border-radius: 1.5rem;
     justify-self: center;
 }
-.about__info{
+.about__dates{
     grid-template-columns: repeat(3, 140px);
     gap: 0.5rem;
     margin-bottom: var(--mb-2);
@@ -59,7 +59,7 @@
         text-align: center;
     }
 
-    .about__info{
+    .about__dates{
         justify-content: center;
     }
 
@@ -71,7 +71,7 @@
   
   /* For medium devices */
   @media screen and (max-width: 576px) {
-    .about__info{
+    .about__dates{
         grid-template-columns: repeat(3, 1fr);
     }
 
@@ -81,5 +81,7 @@
   }
   /* For small devices */
   @media screen and (max-width: 350px) {
-    
+    .about__dates {
+        grid-template-columns: repeat(2, 1fr);
+    }
   }

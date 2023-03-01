@@ -1,7 +1,7 @@
 import React from "react";
 import "../styles/about.css";
 import AboutImg from "../img/zaloguj sie1.png";
-import Info from "../components/Info";
+import Dates from "../components/Dates";
 import Invitation from "../img/Invitation.pdf";
 
 const About = () => {
@@ -13,7 +13,7 @@ const About = () => {
 			<div className="about__container container grid">
 				<img src={AboutImg} alt="my" className="about__img"></img>
 				<div className="about__data">
-					<Info />
+					<Dates />
 					<p className="about__description">Jesteśmy razem od 4 lat, poznaliśmy 
 					się w liceum i chcemy wziąć ślub. Nien nam Bóg błogosławi 
 					</p>
