@@ -1,0 +1,29 @@
+.register__container{
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    column-gap: 4rem;
+}
+.register__img{
+    width: 500px;
+    padding-top: 1rem;
+    border-radius: 1.5rem;
+    justify-self: center;
+    background-color: rgba(0, 0, 0, 20%);
+    box-shadow: inset -1rem 0.5rem 2rem var(--text-color);
+}
+.register__description {
+    padding: 0 2rem 0 0;
+    margin-bottom: var(--mb-1);
+}
+.register__form-input{
+    margin-bottom: var(--mb-2-5);
+    background-color: var(--container-color);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 0.75rem;
+    text-align: center;
+    padding: .5rem 1rem;
+}
+.register__form-error{
+    position: relative;
+    top: -1.5rem;
+}
