@@ -18,11 +18,15 @@ function App() {
         <BrowserRouter>
                 <Header />
             <main className="main">
+                <Home />   
+                <About /> 
+                <Info />
+                <Register />
                 <Routes>
-                    <Route basename={`/${appName}`} index path="/" element={<Home />} />
+                    {/* <Route basename={`/${appName}`} index path="/" element={<Home />} />
                     <Route basename={`/${appName}`} path="about" element={<About />} />
                     <Route basename={`/${appName}`} path="info" element={<Info />} />
-                    <Route basename={`/${appName}`} path="register" element={<Register />} />
+                    <Route basename={`/${appName}`} path="register" element={<Register />} /> */}
                     <Route basename={`/${appName}`} path="signupFamily" element={<SignupFamily />} />
                     <Route basename={`/${appName}`} path="*" element={<ErrorPage />} />
                 </Routes>

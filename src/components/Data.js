@@ -9,7 +9,7 @@ const Data = () => {
 
             <a href="#rsvp" className="button button--flex">
                 Wezmę udział
-                <i class="uil uil-location-arrow button__icon"></i>
+                <i className="uil uil-location-arrow button__icon"></i>
             </a>
 
         </div>

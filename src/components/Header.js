@@ -19,14 +19,14 @@ const Header = () => {
                         </li>
 
                         <li className="nav__item">
-                            <a href="about" className="nav__link">
+                            <a href="#about" className="nav__link">
                                 <i className="uil uil-master-card nav__icon"></i> 
                                 Nasza historia
                             </a>
                         </li>
 
                         <li className="nav__item">
-                            <a href="info" className="nav__link">
+                            <a href="#info" className="nav__link">
                                 <i className="uil uil-megaphone nav__icon"></i> 
                                 Informacje
                             </a>
@@ -40,7 +40,7 @@ const Header = () => {
                         </li>
 
                         <li className="nav__item">
-                            <a href="register" className="nav__link">
+                            <a href="#register" className="nav__link">
                                 <i className="uil uil-envelope nav__icon"></i> 
                                 RSVP
                             </a>
@@ -54,11 +54,11 @@ const Header = () => {
                         </li>
                     </ul>
 
-                    <i class="uil uil-times nav__close" onClick={() => showMenu(!Toggle)}></i>
+                    <i className="uil uil-times nav__close" onClick={() => showMenu(!Toggle)}></i>
                 </div>
 
                 <div className="nav__toggle" onClick={() => showMenu(!Toggle)}>
-                    <i class="uil uil-apps"></i>
+                    <i className="uil uil-apps"></i>
                 </div>
             </nav>
         </header>
