@@ -11,7 +11,7 @@ async function updateFamily(family){
         body: JSON.stringify(family)
     };
 
-    let result = await fetch("/signupFamily", requestOptions)
+    let result = await fetch("/signup", requestOptions)
         .then(response => { return response.status; })
         .catch(_ => { return StatusCodes.SERVICE_UNAVAILABLE; });
 
