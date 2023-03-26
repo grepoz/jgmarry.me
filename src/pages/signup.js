@@ -27,11 +27,29 @@ const DIETS = [
     { value: "bez glutenu", label: "bez glutenu" }
 ];
 
-export default function SignupFamily() {
+export default function Signup() {
 
     let location = useLocation();
     const navigate = useNavigate();
-    const family = location.state.family;
+    const family = {
+        "id": 1,
+        "name": "Kowalscy",
+        "members": [
+          {
+            "id": 1,
+            "name": "Jan Kowalski",
+            "has_confirmed": true,
+            "diet": "podstawowa"
+          },
+          {
+            "id": 2,
+            "name": "Maria Kowalska",
+            "has_confirmed": false,
+            "diet": "wegetariańska"
+          }
+        ],
+        "needs_accomodation": true
+      }; //location.state.family;
     const members = family.members;
 
     const [chosenDiets, setChosenDiets] = useState(() => setDiets());
@@ -78,7 +96,7 @@ export default function SignupFamily() {
     }
 
     return (
-        <div id="signupFamily">
+        <div id="signup">
             <form onSubmit={handleSubmit} method="POST">
                 <table style={{ width: "100%" }}>
                     <thead>

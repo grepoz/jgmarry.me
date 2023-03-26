@@ -62,7 +62,7 @@ export default function Login() {
         setIsDisabled(false);
 
         let state = { family: family };
-        navigate("/signupFamily", { state });
+        navigate("/signup", { state });
     }
 
     return (
@@ -71,7 +71,6 @@ export default function Login() {
 			<span className="section-subtitle">Powiadom nas</span>
 
             <div className="login__container container grid">
-                <img src={LoginImg} alt="my" className="login__img"></img>
                 <form className="login__form" onSubmit={handleSubmit} method="POST">
                     <label htmlFor="password"><p className="login__description">Podaj hasło z zaproszenia</p></label>
                     <input className="login__form-input" type={"password"} id="loginPassword" name="password" maxLength={PASSWORD_LENGTH}></input>
