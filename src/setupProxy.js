@@ -23,16 +23,6 @@ const backendProxyPUT = {
     },
 }
 
-
-const backendProxyGET = {
-    target: BACKEND_URL,
-    changeOrigin: true,
-    headers: {
-        accept: "application/json",
-        method: "GET",
-    },
-}
-
 module.exports = function (app) {
 
     app.use(
