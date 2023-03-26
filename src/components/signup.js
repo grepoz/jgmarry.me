@@ -27,29 +27,11 @@ const DIETS = [
     { value: "bez glutenu", label: "bez glutenu" }
 ];
 
-export default function Signup() {
+export default function Signup({family, onFamilyUpdate}) {
 
     let location = useLocation();
     const navigate = useNavigate();
-    const family = {
-        "id": 1,
-        "name": "Kowalscy",
-        "members": [
-          {
-            "id": 1,
-            "name": "Jan Kowalski",
-            "has_confirmed": true,
-            "diet": "podstawowa"
-          },
-          {
-            "id": 2,
-            "name": "Maria Kowalska",
-            "has_confirmed": false,
-            "diet": "wegetariańska"
-          }
-        ],
-        "needs_accomodation": true
-      }; //location.state.family;
+    //location.state.family;
     const members = family.members;
 
     const [chosenDiets, setChosenDiets] = useState(() => setDiets());
@@ -92,7 +74,8 @@ export default function Signup() {
             alert("spróbuj ponownie.");
         }
 
-        navigate("/");
+        onFamilyUpdate();
+        //navigate("/");
     }
 
     return (
