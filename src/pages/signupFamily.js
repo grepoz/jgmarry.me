@@ -1,32 +1,49 @@
 import React, { useState } from "react";
 import Select from "react-select"
-import { useLocation } from "react-router-dom";
-import { updateFamily } from "../backend/database-helper/databaseUtils";
+import { useLocation, useNavigate } from "react-router-dom";
 import { StatusCodes } from "http-status-codes";
+
+async function updateFamily(family){
+    const requestOptions = {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(family)
+    };
+
+    let result = await fetch("/signupFamily", requestOptions)
+        .then(response => { return response; })
+        .catch(error => alert(`There was an error: ${error}. Try again later.`));
+
+    return result;
+}
+
+const DIETS = [
+    { value: "podstawowa", label: "podstawowa" },
+    { value: "wegetariańska", label: "wegetariańska" },
+    { value: "wegańska", label: "wegańska" },
+    { value: "bez laktozy", label: "bez laktozy" },
+    { value: "bez glutenu", label: "bez glutenu" }
+];
 
 export default function SignupFamily() {
 
     let location = useLocation();
-    let family = location.state.family;
+    const navigate = useNavigate();
+    const family = location.state.family;
     const members = family.members;
-    const DIETS = [
-        { value: "podstawowa", label: "podstawowa" },
-        { value: "wegetariańska", label: "wegetariańska" },
-        { value: "wegańska", label: "wegańska" },
-        { value: "bez laktozy", label: "bez laktozy" },
-        { value: "bez glutenu", label: "bez glutenu" }
-    ];
 
-    function setDefaultDiets() {
+    const [chosenDiets, setChosenDiets] = useState(() => setDiets());
+
+    function setDiets() {
         let diets = {};
 
         for (let i = 0; i < members.length; i++) {
-            diets[i] = DIETS[0];
+            diets[i] = { value: members[i].diet, label: members[i].diet };
         }
         return diets;
     }
-
-    const [chosenDiets, setChosenDiets] = useState(() => setDefaultDiets());
 
     function handleSelect(guestChoice, i) {
         let diets = { ...chosenDiets };
@@ -42,16 +59,22 @@ export default function SignupFamily() {
             family.members[i].diet = chosenDiets[i].value;
         }
 
-        family.needs_accomodation = event.target['needsAccomodation'].checked;
+        family.needs_accomodation = event.target["needsAccomodation"].checked;
 
         let result = await updateFamily(family);
-        if (result === StatusCodes.OK) {
+
+        if (result.status === StatusCodes.NO_CONTENT) {
             alert("zapisano!");
         }
-        else if (result === StatusCodes.SERVICE_UNAVAILABLE) {
+        else if (result.status === StatusCodes.SERVICE_UNAVAILABLE || result === undefined) {
             alert("tymczasowe problemy z serwerem. spróbuj później.");
-            // send mail here - set mail in .env
+            // send mail here - set mail in .env (with controll to max 10 mails)
         }
+        else {
+            alert("spróbuj ponownie.");
+        }
+
+        navigate("/");
     }
 
     return (
@@ -77,7 +100,7 @@ export default function SignupFamily() {
                                     <input
                                         type="checkbox"
                                         name={`hasConfirmed${i}`}
-                                        value={member.has_confirmed}  // czy potrzebne???
+                                        defaultChecked={member.has_confirmed}
                                         id={i}
                                     />
                                 </td>
@@ -96,12 +119,13 @@ export default function SignupFamily() {
                     </tbody>
                 </table>
 
-                <label htmlFor={'needsAccomodation'}>Chcielibyśmy otrzymać zakwaterowanie</label>
+                <label htmlFor={"needsAccomodation"}>Chcielibyśmy otrzymać zakwaterowanie</label>
                 <input
                     type="checkbox"
-                    name={'needsAccomodation'}
+                    name={"needsAccomodation"}
+                    defaultChecked={family.needs_accomodation}
                 />
-
+                <br/>
                 <input type="submit" value="Potwierdź"></input>
             </form>
 

@@ -1,11 +1,27 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getFamily } from "../backend/database-helper/databaseUtils";
 import { StatusCodes } from 'http-status-codes';
 import "../styles/register.css"
 import RegisterImg from "../img/my.png";
 
-export default function Register() {
+async function loginFamily(password) {
+
+    const requestOptions = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },// necessary ????
+        body: JSON.stringify({ "password": password })
+    };
+
+    let result = await fetch("/login", requestOptions)
+        .then(response => { return response.json(); })
+        .catch(error => alert(`There was an error: ${error}. Try again later.`));
+
+    return result;
+}
+
+export default function Login() {
 
     let sanitizer = require("string-sanitizer");
     const PASSWORD_LENGTH = 6;
@@ -17,7 +33,7 @@ export default function Register() {
         event.preventDefault();
 
         setIsDisabled(true);
-        let password = document.getElementById("registerPassword").value;
+        var password = document.getElementById("registerPassword").value;
 
         if (password.length !== PASSWORD_LENGTH) {
             setErrorMessage("hasło ma dokładnie 6 znaków.");
@@ -27,7 +43,7 @@ export default function Register() {
 
         let sanitized_password = sanitizer.sanitize.keepNumber(password);
 
-        let family = await getFamily(sanitized_password);
+        let family = await loginFamily(sanitized_password);
 
         if (family === StatusCodes.NOT_FOUND) {
             setErrorMessage("nie znaleziono rodziny dla podanego hasła.");
@@ -48,8 +64,6 @@ export default function Register() {
         let state = { family: family };
         navigate("/signupFamily", { state });
     }
-
-
 
     return (
         <section className="register section" id="register">
