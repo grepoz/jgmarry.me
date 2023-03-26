@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { StatusCodes } from 'http-status-codes';
 import "../styles/login.css"
 import Signup from "../components/signup";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 async function loginFamily(password) {
 
@@ -14,10 +16,17 @@ async function loginFamily(password) {
     };
 
     let result = await fetch("/login", requestOptions)
-        .then(response => { return response.json(); })
-        .catch(_ => { return StatusCodes.SERVICE_UNAVAILABLE; });
+        .then(response => { return response; })
+        .catch(_ => {
+            result.status = StatusCodes.SERVICE_UNAVAILABLE;
+            return result; });
 
-    return result;
+    if (result.status === StatusCodes.OK){
+        return result.json();
+    }
+    else{
+        return result.status;
+    }
 }
 
 export default function Rsvp() {
@@ -31,8 +40,11 @@ export default function Rsvp() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [family, setFamily] = useState({});
 
-    function handleFamilyUpdate(evt) {
+    const notify = () => toast("Wow so easy!");
+
+    function handleFamilyUpdate() {
         setIsLoggedIn(false);
+        notify();
       }
 
     async function handleSubmit(event) {
@@ -55,13 +67,18 @@ export default function Rsvp() {
             setErrorMessage("nie znaleziono rodziny dla podanego hasła.");
             setIsDisabled(false);
         }
-
-        else if (family === StatusCodes.BAD_REQUEST || family === StatusCodes.SERVICE_UNAVAILABLE) {
+        if (family === StatusCodes.UNAUTHORIZED) {
+            setErrorMessage("nieprawidłowe hasło.");
+            setIsDisabled(false);
+        }
+        else if (family === StatusCodes.BAD_REQUEST ||
+            family === StatusCodes.SERVICE_UNAVAILABLE ||
+            family === StatusCodes.GATEWAY_TIMEOUT) {
             // jeśli dwie rodziny mają to samo hasło - wywala
             setErrorMessage("przepraszamy, wystąpił błąd serwera.");
             setIsDisabled(false);
         }
-        else {
+        else if (family !== undefined && "members" in family) {
             setErrorMessage("");
             setIsDisabled(false);
 
@@ -69,8 +86,8 @@ export default function Rsvp() {
             setFamily(family);
         }
 
-        // const familyConst = {
-        //     "id": 1,
+        // family = {
+        //     "id": 22,
         //     "name": "Kowalscy",
         //     "members": [
         //       {
@@ -87,8 +104,10 @@ export default function Rsvp() {
         //       }
         //     ],
         //     "needs_accomodation": true
-        //   }; 
-        //   setFamily(familyConst);
+        // }; 
+
+        // setIsLoggedIn(true);
+        // setFamily(family);
     }
 
     return (
@@ -113,6 +132,17 @@ export default function Rsvp() {
                     </form>
                 </div>
             </>}
+            <ToastContainer 
+            position="top-right"
+            autoClose={2000}
+            hideProgressBar={true}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light" />
         </section>
     )
 }

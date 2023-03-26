@@ -29,7 +29,6 @@ const DIETS = [
 export default function Signup({family, onFamilyUpdate}) {
 
     const members = family.members;
-
     const [chosenDiets, setChosenDiets] = useState(() => setDiets());
 
     function setDiets() {
@@ -122,7 +121,6 @@ export default function Signup({family, onFamilyUpdate}) {
                 <br/>
                 <input type="submit" value="Potwierdź"></input>
             </form>
-
         </div>
     );
 }
