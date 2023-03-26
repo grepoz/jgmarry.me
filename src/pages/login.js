@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { StatusCodes } from 'http-status-codes';
-import "../styles/register.css"
-import RegisterImg from "../img/my.png";
+import "../styles/login.css"
+import LoginImg from "../img/my.png";
 
 async function loginFamily(password) {
 
@@ -33,7 +33,7 @@ export default function Login() {
         event.preventDefault();
 
         setIsDisabled(true);
-        var password = document.getElementById("registerPassword").value;
+        var password = document.getElementById("loginPassword").value;
 
         if (password.length !== PASSWORD_LENGTH) {
             setErrorMessage("hasło ma dokładnie 6 znaków.");
@@ -66,16 +66,16 @@ export default function Login() {
     }
 
     return (
-        <section className="register section" id="register">
+        <section className="login section" id="login">
             <h2 className="section-title">RSVP</h2>
 			<span className="section-subtitle">Powiadom nas</span>
 
-            <div className="register__container container grid">
-                <img src={RegisterImg} alt="my" className="register__img"></img>
-                <form className="register__form" onSubmit={handleSubmit} method="POST">
-                    <label htmlFor="password"><p className="register__description">Podaj hasło z zaproszenia</p></label>
-                    <input className="register__form-input" type={"password"} id="registerPassword" name="password" maxLength={PASSWORD_LENGTH}></input>
-                    {(!errorMessage !== "") ? <span style={{ color: "red" }} ><div className="register__form-error">{errorMessage}</div></span> : <></>}
+            <div className="login__container container grid">
+                <img src={LoginImg} alt="my" className="login__img"></img>
+                <form className="login__form" onSubmit={handleSubmit} method="POST">
+                    <label htmlFor="password"><p className="login__description">Podaj hasło z zaproszenia</p></label>
+                    <input className="login__form-input" type={"password"} id="loginPassword" name="password" maxLength={PASSWORD_LENGTH}></input>
+                    {(!errorMessage !== "") ? <span style={{ color: "red" }} ><div className="login__form-error">{errorMessage}</div></span> : <></>}
                     <input className="button button--flex" type="submit" value="Zaloguj się" disabled={isDisabled}></input>
                 </form>
             </div>

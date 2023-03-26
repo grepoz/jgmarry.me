@@ -40,7 +40,7 @@ const Header = () => {
                         </li>
 
                         <li className="nav__item">
-                            <a href="#register" className="nav__link">
+                            <a href="#signupFamily" className="nav__link">
                                 <i className="uil uil-envelope nav__icon"></i> 
                                 RSVP
                             </a>

@@ -25,7 +25,7 @@ const Info = () => {
 						<i className="uil uil-arrow-right info_button-icon"></i>
 					</span>
 
-					<div className={toggleState == 1 ? "info__modal active-modal" : "info__modal"}>
+					<div className={toggleState === 1 ? "info__modal active-modal" : "info__modal"}>
 						<div className="info__modal-content">
 							<i className="uil uil-times info__modal-close" onClick={() => toggleTab(0)}></i>
 							<h3 className="info__modal-title">Ślub</h3>
@@ -66,7 +66,7 @@ const Info = () => {
 						<i className="uil uil-arrow-right info_button-icon"></i>
 					</span>
 
-					<div className={toggleState == 2 ? "info__modal active-modal" : "info__modal"}>
+					<div className={toggleState === 2 ? "info__modal active-modal" : "info__modal"}>
 						<div className="info__modal-content">
 							<i className="uil uil-times info__modal-close" onClick={() => toggleTab(0)}></i>
 							<h3 className="info__modal-title">Wesele</h3>
@@ -116,7 +116,7 @@ const Info = () => {
 						<i className="uil uil-arrow-right info_button-icon"></i>
 					</span>
 
-					<div className= {toggleState == 3 ? "info__modal active-modal" : "info__modal"}>
+					<div className= {toggleState === 3 ? "info__modal active-modal" : "info__modal"}>
 						<div className="info__modal-content">
 							<i className="uil uil-times info__modal-close" onClick={() => toggleTab(0)}></i>
 							<h3 className="info__modal-title">Ognisko</h3>
