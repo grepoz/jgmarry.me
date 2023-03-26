@@ -78,7 +78,7 @@ export default function SignupFamily() {
     }
 
     return (
-        <div>
+        <div id="signupFamily">
             <form onSubmit={handleSubmit} method="POST">
                 <table style={{ width: "100%" }}>
                     <thead>
