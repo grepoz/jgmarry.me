@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Select from "react-select"
-import { useLocation, useNavigate } from "react-router-dom";
 import { StatusCodes } from "http-status-codes";
 
 async function updateFamily(family){
@@ -13,8 +12,8 @@ async function updateFamily(family){
     };
 
     let result = await fetch("/signupFamily", requestOptions)
-        .then(response => { return response; })
-        .catch(error => alert(`There was an error: ${error}. Try again later.`));
+        .then(response => { return response.status; })
+        .catch(_ => { return StatusCodes.SERVICE_UNAVAILABLE; });
 
     return result;
 }
@@ -29,9 +28,6 @@ const DIETS = [
 
 export default function Signup({family, onFamilyUpdate}) {
 
-    let location = useLocation();
-    const navigate = useNavigate();
-    //location.state.family;
     const members = family.members;
 
     const [chosenDiets, setChosenDiets] = useState(() => setDiets());
@@ -63,19 +59,16 @@ export default function Signup({family, onFamilyUpdate}) {
 
         let result = await updateFamily(family);
 
-        if (result.status === StatusCodes.NO_CONTENT) {
-            alert("zapisano!");
+        if (result === StatusCodes.NO_CONTENT) {
+            onFamilyUpdate();
         }
-        else if (result.status === StatusCodes.SERVICE_UNAVAILABLE || result === undefined) {
+        else if (result === StatusCodes.SERVICE_UNAVAILABLE || result === undefined) {
             alert("tymczasowe problemy z serwerem. spróbuj później.");
             // send mail here - set mail in .env (with controll to max 10 mails)
         }
         else {
             alert("spróbuj ponownie.");
         }
-
-        onFamilyUpdate();
-        //navigate("/");
     }
 
     return (
