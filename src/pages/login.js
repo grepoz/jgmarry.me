@@ -16,7 +16,7 @@ async function loginFamily(password) {
 
     let result = await fetch("/login", requestOptions)
         .then(response => { return response.json(); })
-        .catch(error => alert(`There was an error: ${error}. Try again later.`));
+        .catch(_ => { return StatusCodes.SERVICE_UNAVAILABLE; });
 
     return result;
 }
