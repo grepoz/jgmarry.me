@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/footer.css"
+import "../styles/Footer.css"
 
 function Footer() {
 	
@@ -38,8 +38,7 @@ function Footer() {
 					&#169; Julia&Grześ. All rights reserved
 				</span>
 			</div>
-		</footer>
-        
+		</footer>  
 	)
 }
 

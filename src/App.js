@@ -6,7 +6,7 @@ import Home from "./pages/home.js";
 import About from "./pages/about";
 import Info from "./pages/info";
 import Rsvp from "pages/rsvp";
-import Kontakt from "pages/kontakt";
+import Contact from "pages/contact";
 import Footer from "./components/Footer.js"
 
 function App() {
@@ -19,7 +19,7 @@ function App() {
                 <About /> 
                 <Info />
                 <Rsvp />
-                <Kontakt />
+                <Contact />
                 <Footer />
             </main>
             <footer></footer>

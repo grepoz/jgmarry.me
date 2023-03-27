@@ -34,6 +34,8 @@
     height: 35px;
     cursor: pointer;
     position: relative;
+    margin-left: auto;
+    margin-right: auto;
   }
   
   .toggler-wrapper input[type="checkbox"] {
@@ -49,7 +51,7 @@
     position: absolute;
     border-radius: 100px;
     top: 0;
-    left: 5rem;
+    /* left: 5rem; */
     width: 100%;
     height: 100%;
     -webkit-transition: all 300ms ease;
@@ -86,6 +88,16 @@
     background-repeat: no-repeat;
     background-position: center;
   }
+
+.centered-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.centered-content > div {
+  margin: 0 10px; /* Dodaje odstęp między dwoma div'ami */
+}
 
 /* CHECKOUT */
 

@@ -83,7 +83,6 @@ export default function Signup({family, onFamilyUpdate}) {
                         </tr>
                     </thead>
                     <tbody>
-
                         {members.map((member, i) =>
                             <tr key={i} className="signup__table-row">
                                 <td>
@@ -114,21 +113,23 @@ export default function Signup({family, onFamilyUpdate}) {
                                 </td>
                             </tr>
                         )}
-
                     </tbody>
                 </table>
-                
-                <label 
-                    htmlFor={"needsAccomodation"}
-                    className="signup__acc-label">
-                    Chcielibyśmy otrzymać zakwaterowanie
-                </label>
-                <input
-                    type="checkbox"
-                    name={"needsAccomodation"}
-                    defaultChecked={family.needs_accomodation}
-                />
-                <br/>
+                <div className="centered-content">
+                    <div className="signup__table-title">Chcielibyśmy otrzymać zakwaterowanie</div>
+                    <div>
+                        <label className="toggler-wrapper style-25">
+                            <input 
+                                type="checkbox"
+                                name={"needsAccomodation"}
+                                defaultChecked={family.needs_accomodation}
+                            />
+                            <div className="toggler-slider">
+                                <div className="toggler-knob"></div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
                 <input 
                     type="submit" 
                     value="Wyślij"

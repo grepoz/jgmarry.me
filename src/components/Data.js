@@ -7,11 +7,10 @@ const Data = () => {
             <h3 className="home__subtitle">9.09.2023</h3>
             <p className="home__description">Zapraszają na uroczyste zawarcie związku małżeńskiego</p>
 
-            <a href="#rsvp" className="button button--flex">
+            <a href="#login" className="button button--flex">
                 Wezmę udział
                 <i className="uil uil-location-arrow button__icon"></i>
             </a>
-
         </div>
 
     );
