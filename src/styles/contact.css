@@ -37,7 +37,7 @@
 }
 .contact__card-data{
     display: block;
-    /* margin-bottom: var(--mb-0-25); */
+    margin-bottom: var(--mb-0-75);
 }
 .contact__card-info{
     display: flex;
@@ -99,7 +99,7 @@
 }
 
 .contact__form-area {
-    height: 15rem;
+    height: 10rem;
 }
 
 .contact__form-area textarea {

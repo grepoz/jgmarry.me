@@ -1,8 +1,8 @@
 import React, { useRef } from 'react';
 import emailjs from '@emailjs/browser';
-import "../styles/kontakt.css";
+import "../styles/contact.css";
 
-const Kontakt = () => {
+const Contact = () => {
 
     const form = useRef();
 
@@ -39,7 +39,7 @@ const Kontakt = () => {
                                 contact__button-icon"></i>
                             </a>
                         </div>
-
+{/* 
                         <div className="contact__card">
                             <i className="bx bx-user contact__card-icon"></i>
                             <h3 className="contact__card-title">Julia</h3>
@@ -84,7 +84,7 @@ const Kontakt = () => {
                             <a href="" className="contact__button">
                                 Zobacz nr. tel.{" "}
                             </a>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
 
@@ -132,4 +132,4 @@ const Kontakt = () => {
     )
 };
 
-export default Kontakt
+export default Contact
