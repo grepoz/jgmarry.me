@@ -42,7 +42,6 @@ export default function Rsvp() {
 
     const notify = () => toast("Dziękujemy za wysłanie potwierdzenia!");
     
-
     function handleFamilyUpdate() {
         setIsLoggedIn(false);
         notify();
@@ -61,7 +60,6 @@ export default function Rsvp() {
         }
 
         let sanitized_password = sanitizer.sanitize.keepNumber(password);
-
         let family = await loginFamily(sanitized_password);
 
         if (family === StatusCodes.NOT_FOUND) {
@@ -78,7 +76,6 @@ export default function Rsvp() {
             // jeśli dwie rodziny mają to samo hasło - wywala
             setErrorMessage("przepraszamy, wystąpił błąd serwera.");
             setIsDisabled(false);
-
         }
         else if (family !== undefined && "members" in family) {
             setErrorMessage("");
@@ -87,29 +84,6 @@ export default function Rsvp() {
             setIsLoggedIn(true);
             setFamily(family);
         }
-
-        // family = {
-        //     "id": 22,
-        //     "name": "Kowalscy",
-        //     "members": [
-        //       {
-        //         "id": 1,
-        //         "name": "Jan Kowalski",
-        //         "has_confirmed": true,
-        //         "diet": "podstawowa"
-        //       },
-        //       {
-        //         "id": 2,
-        //         "name": "Maria Kowalska",
-        //         "has_confirmed": false,
-        //         "diet": "wegetariańska"
-        //       }
-        //     ],
-        //     "needs_accomodation": true
-        // }; 
-
-        // setIsLoggedIn(true);
-        // setFamily(family);
     }
 
     return (
@@ -135,16 +109,17 @@ export default function Rsvp() {
                 </div>
             </>}
             <ToastContainer
-            position="top-right"
-            autoClose={2000}
-            hideProgressBar={true}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-            theme="light" />
+                position="top-right"
+                autoClose={2000}
+                hideProgressBar={true}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+            />
             
         </section>
     )
