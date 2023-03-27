@@ -12,7 +12,7 @@ const Header = () => {
                 "nav__menu"}>
                     <ul className="nav__list grid">
                         <li className="nav__item">
-                            <a href="/" className="nav__link active-link">
+                            <a href="#home" className="nav__link active-link">
                                 <i className="uil uil-estate nav__icon"></i> 
                                 Home
                             </a>
@@ -32,12 +32,12 @@ const Header = () => {
                             </a>
                         </li>
 
-                        <li className="nav__item">
+                        {/* <li className="nav__item">
                             <a href="#gallery" className="nav__link">
                                 <i className="uil uil-scenery nav__icon"></i> 
                                 Galeria
                             </a>
-                        </li>
+                        </li> */}
 
                         <li className="nav__item">
                             <a href="#login" className="nav__link">
