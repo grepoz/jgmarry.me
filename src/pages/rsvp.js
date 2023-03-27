@@ -40,7 +40,8 @@ export default function Rsvp() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [family, setFamily] = useState({});
 
-    const notify = () => toast("Wow so easy!");
+    const notify = () => toast("Dziękujemy za wysłanie potwierdzenia!");
+    
 
     function handleFamilyUpdate() {
         setIsLoggedIn(false);
@@ -77,6 +78,7 @@ export default function Rsvp() {
             // jeśli dwie rodziny mają to samo hasło - wywala
             setErrorMessage("przepraszamy, wystąpił błąd serwera.");
             setIsDisabled(false);
+
         }
         else if (family !== undefined && "members" in family) {
             setErrorMessage("");
@@ -123,7 +125,7 @@ export default function Rsvp() {
             </>
             : 
             <>
-                <div className="login__container container grid">
+                <div className="login__container container">
                     <form className="login__form" onSubmit={handleSubmit} method="POST">
                         <label htmlFor="password"><p className="login__description">Podaj hasło z zaproszenia</p></label>
                         <input className="login__form-input" type={"password"} id="loginPassword" name="password" maxLength={PASSWORD_LENGTH}></input>
@@ -132,7 +134,7 @@ export default function Rsvp() {
                     </form>
                 </div>
             </>}
-            <ToastContainer 
+            <ToastContainer
             position="top-right"
             autoClose={2000}
             hideProgressBar={true}
@@ -143,6 +145,7 @@ export default function Rsvp() {
             draggable
             pauseOnHover
             theme="light" />
+            
         </section>
     )
 }

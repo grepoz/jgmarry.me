@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Select from "react-select"
 import { StatusCodes } from "http-status-codes";
+import "../styles/signup.css"
 
 async function updateFamily(family){
     const requestOptions = {
@@ -71,31 +72,36 @@ export default function Signup({family, onFamilyUpdate}) {
     }
 
     return (
-        <div>
+        <div className="signup__container container">
             <form onSubmit={handleSubmit} method="POST">
-                <table style={{ width: "100%" }}>
+                <table className="signup__table">
                     <thead>
-                        <tr>
-                            <th>gosc</th>
-                            <th>obecny</th>
-                            <th>dieta</th>
+                        <tr className="signup__table-title">
+                            <th>Gość</th>
+                            <th>Obecność</th>
+                            <th>Dieta</th>
                         </tr>
                     </thead>
                     <tbody>
 
                         {members.map((member, i) =>
-                            <tr key={i}>
+                            <tr key={i} className="signup__table-row">
                                 <td>
                                     {member.name}
                                 </td>
 
                                 <td>
-                                    <input
-                                        type="checkbox"
-                                        name={`hasConfirmed${i}`}
-                                        defaultChecked={member.has_confirmed}
-                                        id={i}
-                                    />
+                                    <label className="toggler-wrapper style-25">
+                                        <input 
+                                            type="checkbox"
+                                            name={`hasConfirmed${i}`}
+                                            defaultChecked={member.has_confirmed}
+                                            id={i}
+                                        />
+                                        <div className="toggler-slider">
+                                            <div className="toggler-knob"></div>
+                                        </div>
+                                    </label>
                                 </td>
                                 
                                 <td>
@@ -111,15 +117,24 @@ export default function Signup({family, onFamilyUpdate}) {
 
                     </tbody>
                 </table>
-
-                <label htmlFor={"needsAccomodation"}>Chcielibyśmy otrzymać zakwaterowanie</label>
+                
+                <label 
+                    htmlFor={"needsAccomodation"}
+                    className="signup__acc-label">
+                    Chcielibyśmy otrzymać zakwaterowanie
+                </label>
                 <input
                     type="checkbox"
                     name={"needsAccomodation"}
                     defaultChecked={family.needs_accomodation}
                 />
                 <br/>
-                <input type="submit" value="Potwierdź"></input>
+                <input 
+                    type="submit" 
+                    value="Wyślij"
+                    className="signup__button button"
+                    >
+                </input>
             </form>
         </div>
     );
