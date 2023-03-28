@@ -22,7 +22,7 @@ const Dates = () => {
             <i className='bx bx-heart-circle about__icon' ></i>
 
                 <h3 className="about__title">Powiemy sobie tak</h3>
-                <span className="about__subtitle">9.09.2023 <br/> Bazylika św. Mikołaja</span>
+                <span className="about__subtitle">9.09.2023 <br/> Św. Mikołaj</span>
             </div>
         </div>
 
