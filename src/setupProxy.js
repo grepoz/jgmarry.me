@@ -1,13 +1,7 @@
 const { createProxyMiddleware } = require('http-proxy-middleware'); // have to be CommonJS module (old fashion)
 
-let BACKEND_URL = "http://127.0.0.1:4000";
-
-if(process.env.BACKEND_URL) { 
-    BACKEND_URL = process.env.BACKEND_URL; 
-}
-else if (!!(process.env.REACT_APP_DOCKERENV)) {
-    BACKEND_URL = "http://rnn:4000";
-}
+const BACKEND_URL = process.env.BACKEND_URL || (process.env.REACT_APP_DOCKERENV 
+    ? "http://rnn:4000" : "http://127.0.0.1:4000");
 
 const backendProxyPOST = {
     target: BACKEND_URL,
