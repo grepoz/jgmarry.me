@@ -110,8 +110,8 @@ export default function Rsvp() {
             </>}
             <ToastContainer
                 position="top-right"
-                autoClose={2000}
-                hideProgressBar={true}
+                autoClose={5000}
+                hideProgressBar={false}
                 newestOnTop={false}
                 closeOnClick
                 rtl={false}
