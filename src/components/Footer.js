@@ -3,10 +3,7 @@ import "../styles/Footer.css"
 
 function Footer() {
 	
-	let instagramUrl = process.env.REACT_APP_INSTAGRAM_URL; 
-    if (!process.env.REACT_APP_INSTAGRAM_URL){
-        instagramUrl = "#instagram";
-    }
+	const instagramUrl = process.env.REACT_APP_INSTAGRAM_URL || "#instagram";
 
 	return (
 		<footer className="footer">

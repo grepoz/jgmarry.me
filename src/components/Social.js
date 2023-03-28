@@ -2,10 +2,7 @@ import React from "react";
 
 const Social = () => {
 
-    let instagramUrl = process.env.REACT_APP_INSTAGRAM_URL; 
-    if (!process.env.REACT_APP_INSTAGRAM_URL){
-        instagramUrl = "#instagram";
-    }
+    const instagramUrl = process.env.REACT_APP_INSTAGRAM_URL || "#instagram";
 
     return (
         <div className="home__social">
