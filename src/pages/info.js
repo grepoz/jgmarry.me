@@ -38,17 +38,12 @@ const Info = () => {
 
 								<li className="info__modal-info">
 									<i className="uil uil-map-marker info__modal-icon"></i>
-									<p className="info__modal-text">Bazylika św Mikołaja<br/>ul.Świętojańska 72, Gdańsk </p>
+									<p className="info__modal-text">Bazylika św. Mikołaja<br/>ul.Świętojańska 72, Gdańsk </p>
 								</li>
 
 								<li className="info__modal-info">
 									<i className="uil uil-clock info__modal-icon"></i>
 									<p className="info__modal-text">9 Września<br/>Sobota | 15:00</p>
-								</li>
-
-								<li className="info__modal-info">
-									<i className="uil uil-info-circle info__modal-icon"></i>
-									<p className="info__modal-text">w kościele będzie zimno</p>
 								</li>
 							</ul>
 						</div>
@@ -71,8 +66,7 @@ const Info = () => {
 							<i className="uil uil-times info__modal-close" onClick={() => toggleTab(0)}></i>
 							<h3 className="info__modal-title">Wesele</h3>
 							<p className="info__modal-description">
-								Świętowanie odbędzie się w pięknej Villi z ogrodem. 
-								Będziemy balować do białego rana ps. można tańczyć na stołach
+								Świętowanie odbędzie się w pięknej Villi Evie z ogrodem.
 							</p>
 							<ul className="info__modal-infos grid">
 
@@ -98,7 +92,7 @@ const Info = () => {
 
 								<li className="info__modal-info">
 									<i className="uil uil-info-circle info__modal-icon"></i>
-									<p className="info__modal-text">możliwośc zarezerwowania noclegu</p>
+									<p className="info__modal-text">możliwość zarezerwowania noclegu</p>
 								</li>
 							</ul>
 						</div>
@@ -121,8 +115,7 @@ const Info = () => {
 							<i className="uil uil-times info__modal-close" onClick={() => toggleTab(0)}></i>
 							<h3 className="info__modal-title">Ognisko</h3>
 							<p className="info__modal-description">
-								Będzie weselne ognisko dla wszystkich naszych ziomeczków, 
-								którzy chcą z nami świętować. Sami wiecie gdzie :)
+								Tydzień po weselu organizujemy ognisko dla naszych przyjaciół. Sami wiecie gdzie :)
 							</p>
 							<ul className="info__modal-infos grid">
 
@@ -138,7 +131,7 @@ const Info = () => {
 
 								<li className="info__modal-info">
 									<i className="uil uil-external-link-alt info__modal-icon"></i>
-									<p className="info__modal-text"><a href="https://www.facebook.com/" target="_blank" >wydarzenie na fb</a></p>
+									<p className="info__modal-text"><a href="https://www.facebook.com/" target="_blank" rel="noreferrer">wydarzenie na fb</a></p>
 								</li>
 
 								<li className="info__modal-info">
