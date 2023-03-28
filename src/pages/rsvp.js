@@ -25,6 +25,8 @@ async function loginFamily(password) {
         return result.json();
     }
     else{
+        console.log(`\n ======= While logging backend respond with status: ${result.status} ======= \n`);
+
         return result.status;
     }
 }

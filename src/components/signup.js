@@ -16,6 +16,8 @@ async function updateFamily(family){
         .then(response => { return response.status; })
         .catch(_ => { return StatusCodes.SERVICE_UNAVAILABLE; });
 
+    console.log(`\n ======= While updating family, backend response was: ${result} ======= \n`);
+
     return result;
 }
 
