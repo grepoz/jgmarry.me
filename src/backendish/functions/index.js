@@ -14,7 +14,7 @@ exports.login = functions.https.onRequest(async (request, response) => {
       .find((f) => f.password === familyPassword);
 
   if (family) {
-    response.json(family);
+    response.status(200).json(family);
   } else {
     response.status(401).json({success: false});
   }
