@@ -11,7 +11,7 @@
 }
 .login__form-input{
     margin-bottom: var(--mb-2-5);
-    background-color: var(--body-color);
+    background-color: var(--container-color);
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 0.75rem;
     text-align: center;
