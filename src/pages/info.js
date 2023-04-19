@@ -21,7 +21,7 @@ const Info = () => {
 					</div>
 
 					<span className="info__button" onClick={() => toggleTab(1)}>
-						View More
+						Zobacz więcej
 						<i className="uil uil-arrow-right info_button-icon"></i>
 					</span>
 
@@ -57,7 +57,7 @@ const Info = () => {
 					</div>
 
 					<span className="info__button" onClick={() => toggleTab(2)}>
-						View More
+						Zobacz więcej
 						<i className="uil uil-arrow-right info_button-icon"></i>
 					</span>
 
@@ -66,7 +66,7 @@ const Info = () => {
 							<i className="uil uil-times info__modal-close" onClick={() => toggleTab(0)}></i>
 							<h3 className="info__modal-title">Wesele</h3>
 							<p className="info__modal-description">
-								Świętowanie odbędzie się w pięknej Villi Evie z ogrodem.
+								Z Świętowanie odbędzie się w pięknej Villi Evia we Wrzeszczu.
 							</p>
 							<ul className="info__modal-infos grid">
 
@@ -76,37 +76,70 @@ const Info = () => {
 								</li>
 
 								<li className="info__modal-info">
-									<i className="uil uil-clock info__modal-icon"></i>
-									<p className="info__modal-text">9 Września<br/>Sobota | 16:30</p>
+									<i className="uil uil-info-circle info__modal-icon"></i>
+									<p className="info__modal-text">Przy restauracji jest darmowy parking dla naszych gości.</p>
 								</li>
 
 								<li className="info__modal-info">
 									<i className="uil uil-info-circle info__modal-icon"></i>
-									<p className="info__modal-text">dresscode: glamour</p>
+									<p className="info__modal-text">Istnieje możliwość zarezerwowania noclegu w Villa Eva. W razie potrzeby skontaktuj się z nami :)</p>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div className="info__content special">
+					<div>
+						<i className="uil uil-star info__icon"></i>
+						<h3 className="info__title">Konkurs</h3>
+					</div>
+
+					<span className="info__button" onClick={() => toggleTab(3)}>
+						Zobacz więcej
+						<i className="uil uil-arrow-right info_button-icon"></i>
+					</span>
+
+					<div className= {toggleState === 3 ? "info__modal active-modal" : "info__modal"}>
+						<div className="info__modal-content">
+							<i className="uil uil-times info__modal-close" onClick={() => toggleTab(0)}></i>
+							<h3 className="info__modal-title">Konkurs</h3>
+							<p className="info__modal-description">
+								W trakcie trwania wesela wszyscy goście zaproszeni są do konkursu na najciekawsze zdjęcie lub filmik. 
+							</p>
+							<ul className="info__modal-infos grid">
+
+								<li className="info__modal-info">
+									<i className="uil uil-arrow-right info__modal-icon"></i>
+									<p className="info__modal-text">Zrób ciekawe zdjęcie lub nagraj filmik</p>
 								</li>
 
 								<li className="info__modal-info">
-									<i className="uil uil-info-circle info__modal-icon"></i>
-									<p className="info__modal-text">darmowy parking dla gości</p>
+									<i className="uil uil-arrow-right info__modal-icon"></i>
+									<p className="info__modal-text">wyślij nam</p>
 								</li>
 
 								<li className="info__modal-info">
-									<i className="uil uil-info-circle info__modal-icon"></i>
-									<p className="info__modal-text">możliwość zarezerwowania noclegu</p>
+									<i className="uil uil-external-link-alt info__modal-icon"></i>
+									<p className="info__modal-text"><a href="https://www.facebook.com/" target="_blank" rel="noreferrer">instagram</a></p>
+								</li>
+
+								<li className="info__modal-info">
+									<i className="uil uil-arrow-right info__modal-icon"></i>
+									<p className="info__modal-text">przewidziane są nagrody</p>
 								</li>
 							</ul>
 						</div>
 					</div>
 				</div>
 
-				<div className="info__content">
+				{/* <div className="info__content">
 					<div>
 						<i className="uil uil-fire info__icon"></i>
 						<h3 className="info__title">Ognisko</h3>
 					</div>
 
 					<span className="info__button" onClick={() => toggleTab(3)}>
-						View More
+						Zobacz więcej
 						<i className="uil uil-arrow-right info_button-icon"></i>
 					</span>
 
@@ -147,7 +180,7 @@ const Info = () => {
 							</ul>
 						</div>
 					</div>
-				</div>
+				</div> */}
 
 			</div>
 		</section>

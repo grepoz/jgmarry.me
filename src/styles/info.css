@@ -44,6 +44,10 @@
     transform: translateX(00.25rem);
 }
 
+.special{
+    background-color: #faecaf;
+}
+
 .info__modal{
     position: fixed;
     top: 0;
