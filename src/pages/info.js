@@ -104,7 +104,7 @@ const Info = () => {
 							<i className="uil uil-times info__modal-close" onClick={() => toggleTab(0)}></i>
 							<h3 className="info__modal-title">Konkurs</h3>
 							<p className="info__modal-description">
-								W trakcie trwania wesela wszyscy goście zaproszeni są do konkursu na najciekawsze zdjęcie lub filmik. 
+								W trakcie trwania wesela jesteście zaproszeni do konkursu na najciekawsze zdjęcie lub filmik. Na zwycięzcę czeka wyjątkowa nagrada!
 							</p>
 							<ul className="info__modal-infos grid">
 
