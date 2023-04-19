@@ -24,6 +24,19 @@
     text-align: center;
 }
 
+.signup__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  grid-gap: 10px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.signup__grid-title {
+  font-weight: bold;
+  text-align: center;
+}
 
 
 /*////// CUSTOM CHECKBOX /////*/
