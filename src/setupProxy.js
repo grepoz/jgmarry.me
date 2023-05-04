@@ -2,8 +2,6 @@ const { createProxyMiddleware } = require('http-proxy-middleware'); // have to b
 
 const BACKEND_URL = process.env.BACKEND_URL || "http://127.0.0.1:5001/wedding-41b3e/us-central1";
 
-console.log(`\nprocess.env.REACT_APP_DOCKERENV: ${process.env.REACT_APP_DOCKERENV}`)
-
 const backendProxyPOST = {
     target: BACKEND_URL,
     changeOrigin: true

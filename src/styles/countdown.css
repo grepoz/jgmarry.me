@@ -1,0 +1,13 @@
+#countdown{
+    background: #a0aaf9;
+}
+
+.timer-subtitle {
+    margin-bottom: 10px; 
+    margin-top: 20px;
+    padding: 0;
+    color: var(--title-color);
+}
+.cd-section{
+    padding: 2rem 0 2rem;
+}

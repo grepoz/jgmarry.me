@@ -104,7 +104,7 @@ const Info = () => {
 							<i className="uil uil-times info__modal-close" onClick={() => toggleTab(0)}></i>
 							<h3 className="info__modal-title">Konkurs</h3>
 							<p className="info__modal-description">
-								W trakcie trwania wesela jesteście zaproszeni do konkursu na najciekawsze zdjęcie lub filmik. Na zwycięzcę czeka wyjątkowa nagrada!
+								W trakcie wesela jesteście zaproszeni do konkursu na najlepsze zdjęcie lub filmik. Na zwycięzcę czeka wyjątkowa nagrada!
 							</p>
 							<ul className="info__modal-infos grid">
 
@@ -115,12 +115,23 @@ const Info = () => {
 
 								<li className="info__modal-info">
 									<i className="uil uil-arrow-right info__modal-icon"></i>
-									<p className="info__modal-text">wyślij nam</p>
+									<p className="info__modal-text">Wyślij na naszego maila:&nbsp;
+									<a href="https://mail.google.com/mail/?view=cm&fs=1&to=jg.pozorscy@gmail.com" className="contact__button" target="_blank" rel="noreferrer">
+									<i className="uil uil-external-link-alt info__modal-icon"></i>
+										jg.pozorscy@gmail.com
+									</a>
+									</p>
 								</li>
 
 								<li className="info__modal-info">
-									<i className="uil uil-external-link-alt info__modal-icon"></i>
-									<p className="info__modal-text"><a href="https://www.facebook.com/" target="_blank" rel="noreferrer">instagram</a></p>
+									<i className="uil uil-arrow-right info__modal-icon"></i>
+									<p className="info__modal-text">
+										Zdjęcia może dodać na swojego insta: &nbsp;
+										<a href="https://www.instagram.com/" className="contact__button" target="_blank" rel="noreferrer">
+											<i className="uil uil-external-link-alt uil-instagram"></i>
+											Instagram
+										</a>
+									</p>
 								</li>
 
 								<li className="info__modal-info">

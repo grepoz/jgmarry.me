@@ -74,64 +74,64 @@ export default function Signup({family, onFamilyUpdate}) {
     }
 
     return (
-        <div className="signup__container container">
-      <form onSubmit={handleSubmit} method="POST">
-        <div className="signup__grid">
-          <div className="signup__grid-title">Gość</div>
-          <div className="signup__grid-title">Obecność</div>
-          <div className="signup__grid-title">Dieta</div>
-          {members.map((member, i) => (
-            <React.Fragment key={i}>
-              <div>{member.name}</div>
+      <div className="signup__container container">
+        <form onSubmit={handleSubmit} method="POST">
+          <div className="signup__grid">
+            <div className="signup__grid-title">Gość</div>
+            <div className="signup__grid-title">Obecność</div>
+            <div className="signup__grid-title">Dieta</div>
+            {members.map((member, i) => (
+              <React.Fragment key={i}>
+                <div>{member.name}</div>
 
-              <div>
-                <label className="toggler-wrapper style-25">
-                  <input
-                    type="checkbox"
-                    name={`hasConfirmed${i}`}
-                    defaultChecked={member.has_confirmed}
-                    id={i}
+                <div>
+                  <label className="toggler-wrapper style-25">
+                    <input
+                      type="checkbox"
+                      name={`hasConfirmed${i}`}
+                      defaultChecked={member.has_confirmed}
+                      id={i}
+                    />
+                    <div className="toggler-slider">
+                      <div className="toggler-knob"></div>
+                    </div>
+                  </label>
+                </div>
+
+                <div>
+                  <Select
+                    value={chosenDiets[i]}
+                    options={DIETS}
+                    onChange={(e) => handleSelect(e, i)}
+                    placeholder={"Wybierz dietę..."}
                   />
-                  <div className="toggler-slider">
-                    <div className="toggler-knob"></div>
-                  </div>
-                </label>
-              </div>
-
-              <div>
-                <Select
-                  value={chosenDiets[i]}
-                  options={DIETS}
-                  onChange={(e) => handleSelect(e, i)}
-                  placeholder={"Wybierz dietę..."}
+                </div>
+              </React.Fragment>
+            ))}
+          </div>
+          <div className="centered-content">
+            <div className="signup__table-title">
+              Chcielibyśmy otrzymać zakwaterowanie
+            </div>
+            <div>
+              <label className="toggler-wrapper style-25">
+                <input
+                  type="checkbox"
+                  name={"needsAccomodation"}
+                  defaultChecked={family.needs_accomodation}
                 />
-              </div>
-            </React.Fragment>
-          ))}
-        </div>
-        <div className="centered-content">
-          <div className="signup__table-title">
-            Chcielibyśmy otrzymać zakwaterowanie
+                <div className="toggler-slider">
+                  <div className="toggler-knob"></div>
+                </div>
+              </label>
+            </div>
           </div>
-          <div>
-            <label className="toggler-wrapper style-25">
-              <input
-                type="checkbox"
-                name={"needsAccomodation"}
-                defaultChecked={family.needs_accomodation}
-              />
-              <div className="toggler-slider">
-                <div className="toggler-knob"></div>
-              </div>
-            </label>
-          </div>
-        </div>
-        <input
-          type="submit"
-          value="Wyślij"
-          className="signup__button button"
-        ></input>
-      </form>
-    </div>
+          <input
+            type="submit"
+            value="Wyślij"
+            className="signup__button button"
+          ></input>
+        </form>
+      </div>
   );
 }
