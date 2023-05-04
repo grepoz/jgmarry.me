@@ -11,3 +11,5 @@ jobs:
       - name: deploy React to GitHub Pages
         env:
           BACKEND_URL: ${{ secrets.BACKEND_URL }}
+        run: |
+          echo "env var"
