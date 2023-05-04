@@ -1,0 +1,57 @@
+.login__container{
+    text-align: center;
+    border: 1px solid var(--title-color);
+    width: 340px;
+    padding: 3rem;
+    border-radius: 1rem;
+}
+.login__description {
+    margin-bottom: var(--mb-1);
+}
+.login__form-input{
+    margin-bottom: var(--mb-2-5);
+    background-color: var(--container-color);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 0.75rem;
+    text-align: center;
+    padding: .5rem 1rem;
+}
+.login__form-error{
+    position: relative;
+    top: -1.5rem;
+}
+
+
+/* ========= BRAKEPOINTS ========= */
+/* For large devices */
+@media screen and (max-width: 992px) {
+    .login__container{
+        text-align: center;
+        border: 1px solid var(--title-color);
+        width: 340px;
+        padding: 3rem;
+        border-radius: 1rem;
+        margin-left: auto;
+        margin-right: auto;
+    }
+  }
+  
+  /* For medium devices */
+  @media screen and (max-width: 768px) {
+    .login__container{
+        text-align: center;
+        border: 1px solid var(--title-color);
+        width: auto;
+        padding: 3rem;
+        border-radius: 1rem;
+        margin: 0 24px;
+    }
+  }
+  
+  @media screen and (max-width: 576px) {
+
+  }
+  /* For small devices */
+  @media screen and (max-width: 350px) {
+    
+  }
