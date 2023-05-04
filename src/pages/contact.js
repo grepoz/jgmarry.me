@@ -4,6 +4,7 @@ import "../styles/contact.css";
 
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import GoogleMapEmbed from 'components/GoogleMapEmbed';
 
 const Contact = () => {
 
@@ -38,67 +39,13 @@ const Contact = () => {
 
                 <div className="contact__container container grid">
                     <div className="contact__content">
-                        <h3 className="contact__title">Pogadaj z nami</h3>
+                        <h3 className="contact__title">Lokalizacja</h3>
 
                         <div className="contact__info">
-                            <div className="contact__card">
-                                <i className="bx bx-mail-send contact__card-icon"></i>
 
-                                <h3 className="contact__card-title">Email</h3>
-                                <span className="contact__card-data">jg.pozorscy@gmail.com</span>
-
-                                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=jg.pozorscy@gmail.com" className="contact__button" target="_blank" rel="noreferrer">
-                                    Napisz do nas{" "}
-                                    <i className="bx bx-right-arrow-alt
-                                    contact__button-icon"></i>
-                                </a>
+                            <div className="contact__card" style={{height: "450px"}}>
+                            <GoogleMapEmbed/>
                             </div>
-    {/* 
-                            <div className="contact__card">
-                                <i className="bx bx-user contact__card-icon"></i>
-                                <h3 className="contact__card-title">Julia</h3>
-
-                                <div className="contact__card-info">
-                                    <i className="bx bxl-messenger contact__card-icon-small"></i>
-                                    <span className="contact__card-data">Messenger</span>
-                                </div>
-                                    <a href="" className="contact__button">
-                                        Napisz do Julii{" "}
-                                        <i className="bx bx-right-arrow-alt
-                                        contact__button-icon"></i>
-                                    </a>
-                                <div className="contact__card-info">
-                                    <i className="bx bxs-phone contact__card-icon-small"></i>
-                                    <span className="contact__card-data">Telefon</span>
-                                </div>
-                                    <a href="" className="contact__button">
-                                        Zobacz nr. tel.{" "}
-                                    </a>
-                                
-                            </div>
-
-                            <div className="contact__card">
-                                <i className="bx bx-user contact__card-icon"></i>
-
-                                <h3 className="contact__card-title">Grześ</h3>
-                                <div className="contact__card-info">
-                                    <i className="bx bxl-messenger contact__card-icon-small"></i>
-                                    <span className="contact__card-data">Messenger</span>
-                                </div>
-                                <a href="" className="contact__button">
-                                    Napisz do Grzesia{" "}
-                                    <i className="bx bx-right-arrow-alt
-                                    contact__button-icon"></i>
-                                </a>
-                                <div className="contact__card-info">
-
-                                    <i className="bx bxs-phone contact__card-icon-small"></i>
-                                    <span className="contact__card-data">Telefon</span>
-                                </div>
-                                <a href="" className="contact__button">
-                                    Zobacz nr. tel.{" "}
-                                </a>
-                            </div> */}
                         </div>
                     </div>
 

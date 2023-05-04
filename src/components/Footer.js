@@ -24,17 +24,20 @@ function Footer() {
 					</li>
 				</ul>
 
-				<div className="footer__social">
-            		<a href="https://www.facebook.com/profile.php?id=100008116397277" className="footer__social-link" target="_blank" rel="noreferrer">
-                		<i className="uil uil-facebook-f"></i>
-           		 	</a>
-            		<a href={instagramUrl} className="footer__social-link" target="_blank" rel="noreferrer">
-                		<i className="uil uil-instagram"></i>
-            		</a>
-            		<a href="https://accounts.google.com/b/0/AddMailService" className="footer__social-link" target="_blank" rel="noreferrer">
-                		<i className="uil uil-envelope"></i>
-            		</a>
-        		</div>
+				<div className="contact__card">
+					<a href="https://mail.google.com/mail/?view=cm&fs=1&to=jg.pozorscy@gmail.com" className="contact__button" target="_blank" rel="noreferrer">
+						<div>
+							<i className="bx bx-mail-send contact__card-icon"></i>
+
+							<h3 className="contact__card-title">Email</h3>
+							<span className="contact__card-data">jg.pozorscy@gmail.com</span>
+						
+							Napisz do nas bezpośrednio{" "}
+							<i className="bx bx-right-arrow-alt
+							contact__button-icon"></i>
+						</div>
+					</a>
+				</div>
 
 				<span className="footer__copy">
 					&#169; Julia&Grześ. All rights reserved
