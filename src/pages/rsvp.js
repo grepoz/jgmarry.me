@@ -31,6 +31,12 @@ async function loginFamily(password) {
     }
 }
 
+function isClientOrServerError(statusCode) {
+    const statusCodeString = statusCode.toString();
+    const firstChar = statusCodeString.charAt(0);
+    return firstChar === '4' || firstChar === '5';
+  }
+
 export default function Rsvp() {
 
     const PASSWORD_LENGTH = 6;
@@ -72,9 +78,7 @@ export default function Rsvp() {
             setErrorMessage("nieprawidłowe hasło.");
             setIsDisabled(false);
         }
-        else if (family === StatusCodes.BAD_REQUEST ||
-            family === StatusCodes.SERVICE_UNAVAILABLE ||
-            family === StatusCodes.GATEWAY_TIMEOUT) {
+        else if (isClientOrServerError(family)) {
             // jeśli dwie rodziny mają to samo hasło - wywala
             setErrorMessage("przepraszamy, wystąpił błąd serwera.");
             setIsDisabled(false);
