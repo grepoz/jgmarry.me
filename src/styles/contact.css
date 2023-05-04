@@ -13,7 +13,7 @@
 .contact__info {
     display: grid;
     row-gap: 1rem;
-    grid-template-columns: 300px;
+    grid-template-columns: 360px;
 }
 .contact__card {
     border: 1px solid rgba(0, 0, 0, 0.1);
@@ -103,6 +103,10 @@
 
 .contact__form-area textarea {
     resize: none;
+}
+
+.localization__link{
+    color: var(--title-color);
 }
 
 /* ========= BRAKEPOINTS ========= */

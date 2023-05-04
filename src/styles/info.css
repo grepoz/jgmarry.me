@@ -45,7 +45,7 @@
 }
 
 .special{
-    background-color: #a0aaf9;
+    background-color: var(--special-color);
 }
 
 .info__modal{

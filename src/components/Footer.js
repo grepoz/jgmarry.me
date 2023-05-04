@@ -2,8 +2,6 @@ import React from "react";
 import "../styles/footer.css"
 
 function Footer() {
-	
-	const instagramUrl = process.env.REACT_APP_INSTAGRAM_URL || "#instagram";
 
 	return (
 		<footer className="footer">

@@ -1,5 +1,5 @@
 #countdown{
-    background: #a0aaf9;
+    background: var(--special-color);
 }
 
 .timer-subtitle {
@@ -9,5 +9,13 @@
     color: var(--title-color);
 }
 .cd-section{
+    margin-top: 40px;
     padding: 2rem 0 2rem;
 }
+
+@media screen and (max-width: 576px) {
+    .cd-section{
+        margin-top: 0;
+        padding: 2rem 0 2rem;
+    }
+  }
