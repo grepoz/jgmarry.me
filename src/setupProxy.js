@@ -4,7 +4,11 @@ const BACKEND_URL = "https://us-central1-wedding-41b3e.cloudfunctions.net";
 
 const backendProxyPOST = {
     target: BACKEND_URL,
-    changeOrigin: true
+    changeOrigin: true,
+    headers: {
+        accept: "application/json",
+        method: "POST",
+    },
 }
 
 const backendProxyPUT = {
@@ -15,8 +19,6 @@ const backendProxyPUT = {
         method: "PUT",
     },
 }
-
-console.log(`\n ======= Backend url:${BACKEND_URL} ======= \n`);
 
 module.exports = function (app) {
 
