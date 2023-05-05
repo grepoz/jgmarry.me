@@ -12,7 +12,9 @@ async function updateFamily(family){
         body: JSON.stringify(family)
     };
 
-    let result = await fetch("/signup", requestOptions)
+    const BACKEND_URL = "https://us-central1-wedding-41b3e.cloudfunctions.net";
+    
+    let result = await fetch(`${BACKEND_URL}/signup`, requestOptions)
         .then(response => { return response.status; })
         .catch(_ => { return StatusCodes.SERVICE_UNAVAILABLE; });
 

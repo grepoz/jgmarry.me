@@ -15,7 +15,9 @@ async function loginFamily(password) {
         body: JSON.stringify({ "password": password })
     };
 
-    let result = await fetch("/login", requestOptions)
+    const BACKEND_URL = "https://us-central1-wedding-41b3e.cloudfunctions.net";
+
+    let result = await fetch(`${BACKEND_URL}/login`, requestOptions)
         .then(response => { return response; })
         .catch(_ => {
             result.status = StatusCodes.SERVICE_UNAVAILABLE;
