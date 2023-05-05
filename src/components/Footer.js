@@ -1,5 +1,6 @@
 import React from "react";
 import "../styles/footer.css"
+import Popover from './Popover';
 
 function Footer() {
 
@@ -38,7 +39,7 @@ function Footer() {
 				</div>
 
 				<span className="footer__copy">
-					&#169; Julia&Grześ. All rights reserved
+					<Popover text="&#169; Julia&Grześ. All rights reserved" imagePath={"/jgmarry.me-mem.jpg"}/>				
 				</span>
 			</div>
 		</footer>  

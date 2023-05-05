@@ -1,0 +1,30 @@
+/* Popover.css */
+
+.popover-container {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .popover {
+    display: none;
+    position: absolute;
+    z-index: 1;
+    padding: 8px;
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    left: 50%;
+    bottom: 100%;
+    margin-bottom: 8px;
+    transform: translateX(-50%);
+  }
+  
+  .popover img {
+    max-width: 350px;
+    height: auto;
+  }
+  
+  .popover-container:hover .popover {
+    display: block;
+  }
+  
