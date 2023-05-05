@@ -2,7 +2,22 @@ const functions = require("firebase-functions");
 const admin = require("firebase-admin");
 const cors = require("cors");
 
-const corsHandler = cors({origin: true});
+const allowedOrigins = [
+  'https://jgmarry.me',
+  'http://jgmarry.me',
+  'https://www.jgmarry.me',
+  'http://www.jgmarry.me'
+];
+
+const corsHandler = cors({
+  origin: (origin, callback) => {
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+});
 
 admin.initializeApp();
 
