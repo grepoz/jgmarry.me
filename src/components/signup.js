@@ -84,6 +84,7 @@ export default function Signup({family, onFamilyUpdate}) {
             <div className="signup__grid-title">Dieta</div>
             {members.map((member, i) => (
               <React.Fragment key={i}>
+                <div className="line"></div>
                 <div>{member.name}</div>
 
                 <div>
@@ -106,11 +107,19 @@ export default function Signup({family, onFamilyUpdate}) {
                     options={DIETS}
                     onChange={(e) => handleSelect(e, i)}
                     placeholder={"Wybierz dietę..."}
+                    styles={{
+                      control: (baseStyles, state) => ({
+                        ...baseStyles,
+                        borderColor: state.isFocused ? 'grey' : '#44cc66',
+                        minWidth: '130px'
+                      }),
+                    }}
                   />
                 </div>
               </React.Fragment>
             ))}
           </div>
+          <div className="line"></div>
           <div className="centered-content">
             <div className="signup__table-title">
               Chcielibyśmy otrzymać zakwaterowanie
