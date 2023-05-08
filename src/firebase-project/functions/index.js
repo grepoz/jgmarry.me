@@ -2,12 +2,13 @@ const functions = require("firebase-functions");
 const admin = require("firebase-admin");
 const cors = require("cors");
 
+const domain = 'jgmarry.me';
+
 const allowedOrigins = [
-  'https://jgmarry.me',
-  'http://jgmarry.me',
-  'https://www.jgmarry.me',
-  'http://www.jgmarry.me',
-  'http://localhost:3000'
+  `https://${domain}`,
+  `http://${domain}`,
+  `https://www.${domain}`,
+  `http://www.${domain}`
 ];
 
 const corsHandler = cors({
