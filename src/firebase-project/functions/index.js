@@ -6,7 +6,8 @@ const allowedOrigins = [
   'https://jgmarry.me',
   'http://jgmarry.me',
   'https://www.jgmarry.me',
-  'http://www.jgmarry.me'
+  'http://www.jgmarry.me',
+  'http://localhost:3000'
 ];
 
 const corsHandler = cors({
