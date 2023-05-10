@@ -125,3 +125,6 @@
     margin-top: 3rem;
 }
 
+.presents__link{
+  color:  var(--title-color);
+}
