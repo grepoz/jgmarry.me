@@ -107,7 +107,7 @@ export default function Rsvp() {
             </>
             : 
             <>
-                <div className="login__container container">
+                <div className={`login__container container disabled`}>
                     <form className="login__form" onSubmit={handleSubmit} method="POST">
                         <label htmlFor="password"><p className="login__description">Podaj hasło z zaproszenia</p></label>
                         <input className="login__form-input" type={"password"} id="loginPassword" name="password" maxLength={PASSWORD_LENGTH}></input>

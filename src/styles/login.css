@@ -21,6 +21,11 @@
     top: -1.5rem;
 }
 
+.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
 
 /* ========= BRAKEPOINTS ========= */
 /* For large devices */
