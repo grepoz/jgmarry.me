@@ -142,14 +142,6 @@ export default function Signup({family, onFamilyUpdate}) {
             value="Wyślij"
             className="signup__button button"
           ></input>
-          <div className="centered-content" style={{marginTop: "15px"}}>
-            <div>
-              <a href="https://docs.google.com/spreadsheets/d/1uNxUYAr0HN78E6awn31WsYpjlM4JN4fuALWljup5hpo/edit?usp=sharing" 
-                target="_blank" rel="noreferrer" className="presents__link">
-                <u>Link do excela z propzycjami prezentów</u>
-              </a>
-            </div>
-          </div>
         </form>
       </div>
   );
