@@ -41,7 +41,7 @@ const Contact = () => {
                     <div className="contact__content">
                         <h3 className="contact__title">
                         <i className="uil uil-external-link-alt info__modal-icon"></i>&nbsp;
-                            <a className="localization__link" href='https://goo.gl/maps/SA3WnrRkB3CMiibL9'  target="_blank" rel="noreferrer">Lokalizacja</a>
+                            <a className="localization__link" href='https://maps.app.goo.gl/TD6vXk2buNSPxqEn9'  target="_blank" rel="noreferrer">Lokalizacja</a>
                         </h3>
 
                         <div className="contact__info">

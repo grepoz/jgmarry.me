@@ -43,7 +43,13 @@ const Info = () => {
 
 								<li className="info__modal-info">
 									<i className="uil uil-clock info__modal-icon"></i>
-									<p className="info__modal-text">9 Września<br/>Sobota | 15:00</p>
+									<p className="info__modal-text">27 Lipca<br/>Sobota | 15:00</p>
+								</li>
+								
+								<li className="info__modal-info">
+									<i className="uil uil-info-circle info__modal-icon"></i>
+									<p className="info__modal-text">Informacja o parkingu pojawi się później ze względu na rozpoczynający się w dniu ślubu Jarmark Dominikański.
+									Na chwilę obecną najlepszym sposobem na dotarcie jest spacer z Galerii Forum Gdańsk</p>
 								</li>
 							</ul>
 						</div>
@@ -66,13 +72,13 @@ const Info = () => {
 							<i className="uil uil-times info__modal-close" onClick={() => toggleTab(0)}></i>
 							<h3 className="info__modal-title">Wesele</h3>
 							<p className="info__modal-description">
-								Z Świętowanie odbędzie się w pięknej Villi Evia we Wrzeszczu.
+								Z Świętowanie odbędzie się w Karczmie Trzy Dęby na Osowej.
 							</p>
 							<ul className="info__modal-infos grid">
 
 								<li className="info__modal-info">
 									<i className="uil uil-map-marker info__modal-icon"></i>
-									<p className="info__modal-text">Villa Eva<br/>ul.Stefana Batorego 28, Gdańsk </p>
+									<p className="info__modal-text">Karczma Trzy Dęby<br/>ul. Spacerowa 49, Gdańsk </p>
 								</li>
 
 								<li className="info__modal-info">
@@ -82,7 +88,7 @@ const Info = () => {
 
 								<li className="info__modal-info">
 									<i className="uil uil-info-circle info__modal-icon"></i>
-									<p className="info__modal-text">Istnieje możliwość zarezerwowania noclegu w Villa Eva. W razie potrzeby skontaktuj się z nami :)</p>
+									<p className="info__modal-text">Istnieje możliwość zarezerwowania noclegu niedaleko. W razie potrzeby skontaktuj się z nami :)</p>
 								</li>
 							</ul>
 						</div>
